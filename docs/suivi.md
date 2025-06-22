@@ -2,30 +2,88 @@
 
 ## Semaine 1
 
-??? note "Mettre en place l'environnement"
-    - [x] Lorem ipsum dolor sit amet, consectetur adipiscing elit
-    - [ ] Vestibulum convallis sit amet nisi a tincidunt
-        * [x] In hac habitasse platea dictumst
-        * [x] In scelerisque nibh non dolor mollis congue sed et metus
-        * [ ] Praesent sed risus massa
-    - [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
+??? note "Étude des Outils Envisagés"
+    - Exploration des outils technologiques nécessaires pour la création de la plateforme.
+    - Installation et configuration de l'environnement de développement
+       * JavaScript (langage principal)
+       * React et React Native (pour le développement de l’interface web et mobile)
+       * GitHub (pour la gestion de version)
+       * VS Code (environnement de développement)
+       * MkDocs (pour la documentation du projet)
+    - MkDocs (pour la documentation du projet)
 
+??? note "Discussions et avancement"
+    - Discussion d’équipe sur les idées de prototypes à mettre en œuvre.
+    - Réflexion autour de l’expérience utilisateur : comment intégrer les cartes NFC pour modifier dynamiquement le gameplay.
+    - Quelques pistes ont été envisagées pour le prototype initial (ex. : carte qui déclenche une météo aléatoire dans le jeu ou rend un niveau plus difficile).
+    
 !!! info "Notes"
-    - Il est possible que nous révisions les exigences après le prototypage
+    - Nous avons commencé à apprendre JavaScript pour continuer ensuite avec react
 
 !!! warning "Difficultés rencontrées"
-    - Le plugin Mermaid n'était pas reconnu : confusion entre `mkdocs-mermaid2-plugin` (pip) et `mermaid2` (plugin name)
-        - Résolu après nettoyage et configuration correcte dans `mkdocs.yml`
+    - Pas de difficultés cette semaine
 
 !!! abstract "Prochaines étapes"
-    - Démarrer l’analyse du problème
-    - Créer la structure de `etudes_preliminaires.md`
-
+    - Trouver un nom pour la plateforme
+    - Réfléchir sur les exigences fonctionnelles
+    - Concevoir un prototype de l'interface sur figma
 ---
 
 ## Semaine 2
 
+??? note "Préparation du prototypage"
+    - Avoir une liste des exigences fonctionnelles
+    - Conmmencer le protoype figma
+    - Continuer les recherches sur les technologies envisagées
+
+??? note "Discussions et avancement"
+    - Analyse des exigences relevées
+    - Approfondissement sur l'environnement de l'application
+    - Simulation du comportement de l'utilisateur par rapport à la plateforme
+    - Critique du prototype
+
+!!! info "Notes"
+    - Nous avons décidé de nommer la plateforme "ZayLou_games"
+    - Nous avons préféré diviser le projet en 2:
+        * Une application Web pour la création des jeux
+        * Une application mobile pour la lecture des jeux
+
+!!! warning "Difficultés rencontrées"
+    - Concevoir un protoype figma de zéro
+    - Comprendre le concept de "layout"
+    - Se déconstruire des systèmes de jeux déjà connus
+
+!!! abstract "Prochaines étapes"
+    - Revoir le prototype figma
+    - Améliorer les exigences
+    - Recherches sur les manières d'envoyer les jeux créés vers le mobile
+
 ## Semaine 3
+
+??? note "Continuité du prototypage"
+    - Améliorer la liste des exigences fonctionnelles
+    - Revoir le protoype figma
+    - Continuer les recherches sur les technologies envisagées
+
+??? note "Discussions et avancement"
+    - Analyse des nouvelles exigences
+    - Analyse du diagramme d'activités
+    - Compréhension de l'environnement de l'application
+    - Contraintes sur les actions de l'utilisateur
+    - Critique du prototype
+    - Choix de la gestion des jeux sur les appareils mobiles
+
+!!! info "Notes"
+    - Pour la plateforme mobile, nous avons décidé d'y aller avec une Application mobile Native car elle supporte mieux la technologie NFC
+
+!!! warning "Difficultés rencontrées"
+    - Refaire le prototype figma
+    - Être assez stricte dans les contraintes de l'utilisateur sans lui enlever sa liberté de création
+
+!!! abstract "Prochaines étapes"
+    - Continuer le prototype figma
+    - Améliorer les exigences
+    - Schématiser le comportement du jeux lorsqu'un effet est ajouté
 
 ## Semaine 4
 
