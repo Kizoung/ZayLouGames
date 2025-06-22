@@ -721,18 +721,97 @@
 
 <h1 id="etudes-preliminaires">Études préliminaires<a class="headerlink" href="#etudes-preliminaires" title="Permanent link">&para;</a></h1>
 <h2 id="analyse-du-probleme">Analyse du problème<a class="headerlink" href="#analyse-du-probleme" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Décrire le problème à résoudre.</li>
-</ul>
+<p>De nombreuses plateformes de création de jeux vidéo existent aujourd'hui, mais elles présentent plusieurs limitations pour un public jeune ou novice:
+    - Complexité excessive pour les jeunes utilisateurs : des outils comme Unity ou Construct, bien que puissants, peuvent décourager les débutant par leur interface technique;
+    - Peu d'interactivité physique: Peu de plateformes permettent l'intégration de composants physiques comme les cartes NFC, réservées aux jeux commerciaux complexes;
+    - Accessibilité limitée: Certaines plateformes ne sont pas compatibles avec les appareils mobiles ou nécessitent des installations complexes.
+ZayLou Games vise à résoudre ces problèmes en proposant une solution à la fois accessible, interactive et adaptée à un jeune public.</p>
 <h2 id="exigences">Exigences<a class="headerlink" href="#exigences" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Lister les exigences fonctionnelles et non fonctionnelles.</li>
+<li>Fonctionnelles:<ul>
+<li>Création simple de jeu:<ul>
+<li>Création de jeux avec:<ul>
+<li>Nom, description, Catégorie, etc;</li>
+<li>Ajout de quelques éléments de jeu de base (objets prédéfinis);</li>
+</ul>
+</li>
+<li>Éléments de jeu disponibles:<ul>
+<li>Objets standards : porte, bloc, obstacle, ennemi;</li>
+<li>Dimensions ajustables (largeur/ hauteur)</li>
+</ul>
+</li>
+<li>Positionnement libre sur une grille de type 2D:<ul>
+<li>Possibilité d’empiler des objets en les plaçant côte à côte, mais non superposés visuellement;</li>
+</ul>
+</li>
+<li>Restriction:<ul>
+<li>Système de règles complexes (gravité, score, checkpoint, etc);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Détection NFC avec un effet simple:<ul>
+<li>App React Native capable de:<ul>
+<li>Scanner une carte NFC;</li>
+<li>Associer cette carte à un identifiant;</li>
+<li>Appliquer un effet affiché à l'écran;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Interface minimaliste de test:<ul>
+<li>Menu;</li>
+<li>Liste des jeux créés;</li>
+<li>Visualisation simple du monde et des effets;</li>
+<li>Éditeur de jeu:<ul>
+<li>Zone de création en grille 2D;</li>
+<li>Palette d'objets prédéfinis à glisser;</li>
+<li>Bouton "Tester" pour lancer une simulation;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Backend de base:<ul>
+<li>Api:<ul>
+<li>Envoi d'effet par ID de carte;</li>
+<li>Récupération des effets;</li>
+<li>Mise à jour d'un jeu;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Base de données simple:<ul>
+<li>Stockage des:<ul>
+<li>Utilisateurs (au moins en local);</li>
+<li>Jeux créés;</li>
+<li>Cartes NFC et effets associés;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Non Fonctionnelles:</li>
 </ul>
 <h2 id="recherche-de-solutions">Recherche de solutions<a class="headerlink" href="#recherche-de-solutions" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Présenter les solutions existantes et justifier le choix retenu.</li>
+<li>Solutions existantes:<ul>
+<li>Scratch, Unity Playground, Gamefroot : plateformes avec interfaces simplifiées, adaptées à l’apprentissage du game design pour les jeunes;</li>
+<li>Construct ou Unity : plateformes puissantes, mais souvent trop complexes pour les débutants;</li>
+<li>Amiibo (Nintendo) ou cartes NFC pour escape games : intégration physique limitée à des jeux propriétaires.</li>
+</ul>
+</li>
+<li>Justification du choix:
+    Aucune des solutions existantes ne combine accessibilité, créativité, et interactivité physique via NFC. ZayLou Games innove en:
+        - Offrant un outil de création sans code accessible aux jeunes;
+        - Intégrant des interactions physiques via cartes NFC;
+        - Assurant la compatibilité web/mobile avec une interface unique.</li>
 </ul>
 <h2 id="methodologie">Méthodologie<a class="headerlink" href="#methodologie" title="Permanent link">&para;</a></h2>
+<p>Le projet suivra une méthodologie Agile, adaptée aux projets courts et évolutifs:
+    - Réunions hebdomadaires avec le superviseur pour évaluer les progrès et ajuster le travail;
+    - Répartition des tâches entre les membres tout en assurant une compréhension globale par chacun;
+    - Veille technologique continue avec tutoriels, vidéos, forums et documentation pour résoudre les problèmes et s’inspirer des bonnes pratiques.</p>
 
 
 

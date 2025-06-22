@@ -513,6 +513,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Proposition et objectifs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cartes-et-puces-nfc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cartes et puces NFC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langage-de-programmation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Langage de programmation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -748,6 +772,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Proposition et objectifs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cartes-et-puces-nfc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cartes et puces NFC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langage-de-programmation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Langage de programmation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -786,8 +834,7 @@
 <h1 id="projet-ift3150-nom-du-projet">Projet IFT3150: Nom du projet<a class="headerlink" href="#projet-ift3150-nom-du-projet" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p><strong>Thèmes</strong>: Science de données, Génie logiciel<br />
-<strong>Superviseur</strong>: Nom du supervisuer<br />
-<strong>Collaborateurs:</strong> Nom de(s) collaborateur(s) et partenaire(s)</p>
+<strong>Superviseur</strong>: Louis-Edouard LAFONTANT  </p>
 </blockquote>
 <h2 id="informations-importantes">Informations importantes<a class="headerlink" href="#informations-importantes" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
@@ -801,13 +848,54 @@
 </div>
 <h2 id="equipe">Équipe<a class="headerlink" href="#equipe" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Alice Dupont: Responsable de...</li>
-<li>Bob Tremblay: Responsable de...</li>
+<li>Lallia Diakité: Responsable de...</li>
+<li>Marc Olivier Jean Paul: Responsable de...</li>
 </ul>
 <h2 id="description-du-projet">Description du projet<a class="headerlink" href="#description-du-projet" title="Permanent link">&para;</a></h2>
 <h3 id="contexte">Contexte<a class="headerlink" href="#contexte" title="Permanent link">&para;</a></h3>
+<p>La création de jeux vidéo est aujourd'hui facilitée par des plateformes telles que Scratch, Unity Playground, ou Gamefroot. Celles-ci proposent des interfaces simplifiées, souvent basées sur le "glisser-déposer" (drag-and-drop), permettant aux jeunes ou aux novices de concevoir des jeux sans écrire de code. Cependant, ces outils restent parfois limités dans la personnalisation ou la profondeur des mécaniques de jeu qu'ils permettent de développer.</p>
+<p>Parallèlement, la technologie NFC (Near Field Communication) gagne en popularité dans le domaine du jeu vidéo. On la retrouve notamment dans les figurines Amiibo de Nintendo qui permettent de débloquer du contenu dans certains jeux, ou encore dans des cartes interactives utilisées dans les escape games ou les jeux éducatifs. Cette technologie permet d'ajouter une dimension physique et tangible à l'expérience vidéoludique.</p>
 <h3 id="problematique-ou-motivations">Problématique ou motivations<a class="headerlink" href="#problematique-ou-motivations" title="Permanent link">&para;</a></h3>
+<p>Actuellement, il existe de nombreuses plateformes de création de jeux-vidéos,
+Mais elles présentent plusieurs problèmatiques :
+    - Complexité excessive pour les jeunes utilisateurs : des outils comme Unity ou Construct, bien que puissants, peuvent décourager les débutant par leur interface technique;
+    - Peu d'interactivité physique: Peu de plateformes permettent l'intégration de composants physiques comme les cartes NFC, réservées aux jeux commerciaux complexes;
+    - Accessibilité limitée: Certaines plateformes ne sont pas compatibles avec les appareils mobiles ou nécessitent des installations complexes.
+Nous cherchons donc à répondre à ces enjeux en proposant une solution:
+    - Accessible et intuitive, pour permettre aux jeunes de concevoir leur jeux sans connaissances préalables;
+    - Originale grâce aux cartes NFC pour enrichir l'expérience de jeu;
+    - Favorisant la créativité des jeunes.</p>
 <h3 id="proposition-et-objectifs">Proposition et objectifs<a class="headerlink" href="#proposition-et-objectifs" title="Permanent link">&para;</a></h3>
+<p>Nous proposons de créer ZayLou Games une plateforme de création de
+jeux vidéo, pour laquelle nous aurons à :
+    - Créer une plateforme plateforme web pour la création de jeux 2D accessible aux non-développeurs grâce à une interface drag-and-drop;
+    - Créer une application mobile pour l'exécution des jeux;
+    - Intégrer l'utilisation de cartes NFC permettant de déclencher des effets en jeu;
+    - Simuler un effet de profondeur, sasn recourir à la manipulation directe de modèles 3D;
+    - Nous assurer que le jeu créé peut être sauvegardé et joué sur une application mobile compatible.</p>
+<h4 id="cartes-et-puces-nfc">Cartes et puces NFC<a class="headerlink" href="#cartes-et-puces-nfc" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Les utilisateurs peuvent scanner des cartes NFC pour déclencher des effets dans le jeu (bonus, malus, surprises);</li>
+<li>Les cartes contiennent des puces NFC (Near Field Communication);</li>
+<li>Chaque puce stocke un fichier JSON décrivant les effets associés;</li>
+<li>Ces fichiers sont lus par la plateforme pour appliquer les effets au jeu.</li>
+</ul>
+<h4 id="langage-de-programmation">Langage de programmation<a class="headerlink" href="#langage-de-programmation" title="Permanent link">&para;</a></h4>
+<p>Le développement sera divisé entre:
+    - Front-end:
+        - Utilisation de React Native, une bibliothèque JavaScript pour créer des interfaces mobiles et web;
+        - Une seule base de code pour plusieurs plateformes;
+        - Chaque puce stocke un fichier JSON décrivant les effets associés;
+        - Création d'une interface intuitive et réutilisable grâce aux composants.
+    - Back-end:
+        - Utilisation de Node.js, environnement d’exécution JavaScript côté serveur;
+        - Parfait pour les applications en temps réel;
+        - Chaque puce stocke un fichier JSON décrivant les effets associés;
+        - Intégration facile avec MongoDB (base NoSQL) pour la gestion des données utilisateurs et des jeux.
+    - WebSockets:
+        - Gérer la communication en temps réel entre le front-end et le back-end;
+        - Permettre aux utilisateurs de jouer en ligne et d'interagir avec les jeux créés;
+        - Offrir une expérience fluide et réactive.</p>
 <h2 id="echeancier">Échéancier<a class="headerlink" href="#echeancier" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
