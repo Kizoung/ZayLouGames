@@ -1,0 +1,12 @@
+[
+    {
+    // Décrit un effet que peut déclencher une carte NF
+      "id": "string",            // Identifiant unique de l’effet
+      "nom": "string",           // Nom de l’effet (affiché)
+      "type": "bonus|malus",
+      "durée": number,           // En secondes
+      "effetSur": "joueur|niveau",
+      "description": "string"    // Texte descriptif
+    }
+  ]
+  
