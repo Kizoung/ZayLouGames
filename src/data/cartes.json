@@ -1,0 +1,7 @@
+{
+// Fichier associant les cartes NFC (via leur identifiant)
+  // aux effets qu’elles déclenchent dans le jeu.
+    "NFC_ID_001": "idEffet",     // Associe un identifiant de carte NFC à un effet
+    "NFC_ID_002": "idEffet"
+  }
+  
