@@ -74,11 +74,13 @@
     - Choix de la gestion des jeux sur les appareils mobiles
 
 !!! info "Notes"
-    - Pour la plateforme mobile, nous avons décidé d'y aller avec une Application mobile Native car elle supporte mieux la technologie NFC
+    - Pour la plateforme mobile, nous avons décidé d'y aller avec une 
+    Application mobile Native car elle supporte mieux la technologie NFC
 
 !!! warning "Difficultés rencontrées"
     - Refaire le prototype figma
-    - Être assez stricte dans les contraintes de l'utilisateur sans lui enlever sa liberté de création
+    - Être assez stricte dans les contraintes de l'utilisateur sans lui enlever
+    sa liberté de création
 
 !!! abstract "Prochaines étapes"
     - Continuer le prototype figma
@@ -106,8 +108,8 @@
     - Continuer à revoir les exigences
     - Faire un diagramme C4
 
-
 ## Semaine 5
+
 ??? note "Suite pour prototypage et diagramme"
     - Améliorer le prototype figma
     - Continuer à revoir les exigences
@@ -115,18 +117,78 @@
 
 ??? note "Discussions et avancement"
     - Discussion des derniers points à améliorer dans le prototype 
-    - Critique du diagramme C4
+    - Discussion sur le diagramme C4
     - Discussion sur le déroulement des étapes de la création d'un jeu
     - Discussion sur les recherches pour la plateforme mobile
 
+!!! info "Notes"
+    - Pour la création des jeux, nous avons décidé de partir sur le fait que
+    l'utilisateur créerait ses propres effets en jouant dans les paramètres
+    du jeu.
+
+!!! warning "Difficultés rencontrées"
+    - Pas de difficultés particulières
+
+!!! abstract "Prochaines étapes"
+    - Faire un diagramme C4
+    - Terminer le prototype
 
 ## Semaine 6
 
+??? note "Finalisation conception"
+    - Terminer le prototype
+    - Faire un diagramme C4
+
+??? note "Discussions et avancement"
+    - Pas de discussion à cause de la foire
+
 ## Semaine 7
+
+??? note "Finalisation conception (suite)"
+    - Retour sur les avancées faites avant la foire
+    - Continuer à faire des recherches sur les technologies envisagées
+
+??? note "Discussions et avancement"
+    - Validation du prototype
+    - Validation du diagramme C4
+    - Discussion sur la suite du projet
+
+!!! info "Notes"
+    - Pour la création des jeux, nous avons décidé de partir sur le fait que
+    l'utilisateur utiliserait la grille du jeu pour définir lui même les
+    éléments du jeu. Cela lui laisserait ube plus grande liberté tout en 
+    simplifiant le travail des développeurs
+
+!!! abstract "Prochaines étapes"
+    - Commencer l'implémentation du projet
 
 ## Semaine 8
 
+??? note "Recherche pour l'implémentation"
+    - Commencer l'implémentation du projet
+
+??? note "Discussions et avancement"
+    - Pas de discussions à cause du congé
+
+
 ## Semaine 9
+
+??? note "Finalisation conception (suite)"
+    - Retour sur les avancées faites avant le congé
+
+??? note "Discussions et avancement"
+    - Discussion sur la structure du projet
+    - Conseil sur les priorités de l'implémentation
+
+!!! info "Notes"
+    - Comme ZayLou_Games sera divisé en 2 plateformes, sous les conseils
+    du superviseur, nous avons décidé de commencer par l'application web
+    pour la création des jeux. Nous nous concentrerons sur les pages de 
+    création de jeu et des effets.
+
+!!! abstract "Prochaines étapes"
+    - Créer les composantes
+    - Avancer sur la page de création des jeux
 
 ## Semaine 10
 
