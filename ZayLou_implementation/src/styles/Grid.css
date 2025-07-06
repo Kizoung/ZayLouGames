@@ -1,0 +1,42 @@
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 100px;
+}
+
+.row {
+  display: flex;
+  gap: 2px;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  background-color: #ddd;
+  border: 1px solid #aaa;
+  cursor: pointer;
+}
+
+/* Exemple de style selon le type */
+.cell.sol {
+  background-color: #ad520f;
+}
+
+.cell.mur {
+  background-color: #444;
+}
+
+.cell.objet {
+  background-color: #2196f3;
+}
+
+.cell.piege {
+  background-color: #3b1c4a;
+}
+
+
+.cell.selected {
+  outline: 2px solid #2196f3;
+  background-color: #bbdefb;
+}

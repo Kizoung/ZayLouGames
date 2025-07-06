@@ -83,11 +83,42 @@
 !!! abstract "Prochaines étapes"
     - Continuer le prototype figma
     - Améliorer les exigences
-    - Schématiser le comportement du jeux lorsqu'un effet est ajouté
+    - Schématiser le comportement du jeu lorsqu'un effet est ajouté
 
 ## Semaine 4
 
+??? note "Prototypage et diagramme"
+    - Continuer le protoype figma
+    - Continuer les recherches sur les exigences
+    - Schématiser le comportemment du jeu lors de l'ajout des effets
+
+??? note "Discussions et avancement"
+    - Critiquer le prototype
+    - Analyse des améliorations du diagramme d'activité
+    - Amélioration de notre compréhension de l'environnement de l'application
+    - Discussion sur les recherches pour la plateforme mobile
+
+!!! warning "Difficultés rencontrées"
+    - Faire un prototype simple et cohérent avec toutes les idées énoncées
+
+!!! abstract "Prochaines étapes"
+    - Améliorer le prototype figma
+    - Continuer à revoir les exigences
+    - Faire un diagramme C4
+
+
 ## Semaine 5
+??? note "Suite pour prototypage et diagramme"
+    - Améliorer le prototype figma
+    - Continuer à revoir les exigences
+    - Faire un diagramme C4
+
+??? note "Discussions et avancement"
+    - Discussion des derniers points à améliorer dans le prototype 
+    - Critique du diagramme C4
+    - Discussion sur le déroulement des étapes de la création d'un jeu
+    - Discussion sur les recherches pour la plateforme mobile
+
 
 ## Semaine 6
 
