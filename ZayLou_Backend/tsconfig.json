@@ -1,6 +1,5 @@
-//Ce fichier configure le compilateur TypeScript afin de nous aider 
-
-// a transformer les code .ts en .js, et comment generer les modules
+/*Ce fichier configure le compilateur TypeScript afin de nous aider 
+ a transformer les code .ts en .js, et comment generer les modules */
 
 {
     "compilerOptions": {

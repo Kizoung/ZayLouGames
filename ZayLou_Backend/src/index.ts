@@ -23,7 +23,7 @@ app.use(express.json())
 
 // Route GET de test à la racine 
 app.get('/', (req, res) => {
-  res.send('ZayLou Games API - Serveur opérationnel ON EST LES MEILLEUR MDRR')
+  res.send('ZayLou Games API : Serveur opérationnel ON EST LES MEILLEUR MDRR')
 })
 
 // Définit le port d’écoute à partir de .env ou 3000 par défaut
