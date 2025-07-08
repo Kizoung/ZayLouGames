@@ -9,6 +9,8 @@ import { Jeu } from '../core/Jeu'
 export class JeuService {
   private jeux: Jeu[] = []  // Tous les jeux enregistrés
 
+  // moyen recuperation ID
+
   /**
    * Retourne tous les jeux
    */

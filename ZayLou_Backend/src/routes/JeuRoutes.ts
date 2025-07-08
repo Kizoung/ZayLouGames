@@ -41,16 +41,16 @@ router.post('/', function (req: Request, res: Response): void {
     return
   }
 
-  const jeu = new Jeu(id, nom, auteur, grille, effets)   // Création de l'objet jeu
-  jeuService.ajouter(jeu)                                // Ajout au service mémoire
+  const jeu = new Jeu(id, nom, auteur, grille, effets)   
+  jeuService.ajouter(jeu)                               
 
-  res.status(201).json(jeu)                              // Retour du jeu créé
+  res.status(201).json(jeu)                              
 })
 
 // DELETE /api/jeux/:id  Supprimer un jeu par son ID
 router.delete('/:id', function (req: Request, res: Response): void {
-  jeuService.supprimer(req.params.id)  // Suppression dans le service
-  res.status(204).end()                // Pas de contenu en retour
+  jeuService.supprimer(req.params.id)  
+  res.status(204).end()                
 })
 
 // Export du routeur configuré pour utilisation dans index.ts
