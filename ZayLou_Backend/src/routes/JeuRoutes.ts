@@ -1,45 +1,63 @@
-import  { Request, Response, Router } from 'express'
+// Importation des types et fonctions nécessaires depuis Express
+import { Request, Response, Router } from 'express'
+
+// Service de gestion des jeux (ajout, suppression, récupération)
 import { JeuService } from '../services/JeuService'
+
+// Modèle de données représentant un jeu
 import { Jeu } from '../core/Jeu'
 
-// Instance partagée du service (mémoire uniquement)
+// Création d'une instance partagée du service en mémoire
 const jeuService = new JeuService()
+
+// Initialisation du routeur Express
 const router: Router = Router()
 
+// ---------------------------------------------
 // GET /api/jeux → Liste de tous les jeux
-router.get('/', (req: Request, res: Response) => {
-  const jeux = jeuService.getAll()
-  res.json(jeux)
+// ---------------------------------------------
+router.get('/', function (req: Request, res: Response): void {
+  const jeux = jeuService.getAll()        // Récupération de tous les jeux en mémoire
+  res.json(jeux)                          // Réponse JSON envoyée au client
 })
 
-// GET /api/jeux/:id → Détail d’un jeu
-router.get('/:id', (req: Request, res: Response) => {
-  const jeu = jeuService.getById(req.params.id)
+// -------------------------------------------------
+// GET /api/jeux/:id → Récupérer un jeu par son ID
+// -------------------------------------------------
+router.get('/:id', function (req: Request, res: Response): void {
+  const jeu = jeuService.getById(req.params.id)     // Récupération du jeu
   if (jeu) {
-    res.json(jeu)
+    res.json(jeu)                                   // Si trouvé → réponse JSON
   } else {
-    res.status(404).json({ message: 'Jeu non trouvé' })
+    res.status(404).json({ message: 'Jeu non trouvé' }) // Sinon → erreur 404
   }
 })
 
-// POST /api/jeux → Créer un nouveau jeu
-router.post('/', (req: Request, res: Response) => {
-  const { id, nom, auteur, grille, effets } = req.body
+// -----------------------------------------------------
+// POST /api/jeux → Créer un nouveau jeu depuis le corps JSON
+// -----------------------------------------------------
+router.post('/', function (req: Request, res: Response): void {
+  const { id, nom, auteur, grille, effets } = req.body    // Extraction des champs
 
+  // Vérifie que tous les champs nécessaires sont présents
   if (!id || !nom || !auteur || !grille || !effets) {
-    return res.status(400).json({ message: 'Champs manquants' })
+    res.status(400).json({ message: 'Champs manquants' })
+    return
   }
 
-  const jeu = new Jeu(id, nom, auteur, grille, effets)
-  jeuService.ajouter(jeu)
+  const jeu = new Jeu(id, nom, auteur, grille, effets)   // Création de l'objet jeu
+  jeuService.ajouter(jeu)                                // Ajout au service mémoire
 
-  res.status(201).json(jeu)
+  res.status(201).json(jeu)                              // Retour du jeu créé
 })
 
-// DELETE /api/jeux/:id → Supprimer un jeu
-router.delete('/:id', (req: Request, res: Response) => {
-  jeuService.supprimer(req.params.id)
-  res.status(204).end()
+// ----------------------------------------------------
+// DELETE /api/jeux/:id → Supprimer un jeu par son ID
+// ----------------------------------------------------
+router.delete('/:id', function (req: Request, res: Response): void {
+  jeuService.supprimer(req.params.id)  // Suppression dans le service
+  res.status(204).end()                // Pas de contenu en retour
 })
 
+// Export du routeur configuré pour utilisation dans index.ts
 export default router

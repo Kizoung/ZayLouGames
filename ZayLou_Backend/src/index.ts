@@ -4,7 +4,9 @@ import express from 'express'
 //Autoriser les requêtes provenant d'autres domaines
 import cors from 'cors'
 
-import jeuRoutes from './routes/JeuRoutes.js'
+import jeuRoutes from './routes/jeuRoutes'
+
+
 
 
 // Lire les variables d'environnement

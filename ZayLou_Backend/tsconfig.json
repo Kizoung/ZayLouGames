@@ -5,13 +5,16 @@
 {
     "compilerOptions": {
       "target": "ES2020",   //Version Js générée             
-      "module": "ESNext",                  
-      "moduleResolution": "Node",          
-      "strict": true,     // Active toutes les vérifications strictes de types                
+      "module": "CommonJS",                  
+      "moduleResolution": "node",          
+     // "strict": true,     // Active toutes les vérifications strictes de types                
       "esModuleInterop": true,             
       "forceConsistentCasingInFileNames": true,
       "outDir": "dist",                    
-      "rootDir": "src"       // Pour faire comprendre que TypeScript a compiler est dans src             
+      "rootDir": "src" ,      // Pour faire comprendre que TypeScript a compiler est dans src             
+      "allowSyntheticDefaultImports": true,
+      "resolveJsonModule": true,
+      
     },
     "include": ["src"],       // Compile uniquement les fichiers dans le src           
     "exclude": ["node_modules"]           
