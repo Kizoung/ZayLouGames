@@ -5,7 +5,7 @@ import { Request, Response, Router } from 'express'
 import { JeuService } from '../services/JeuService'
 
 // Modèle de données représentant un jeu
-import { Jeu } from '../core/Jeu'
+import { Jeu } from '../models/Jeu'
 
 // Création d'une instance partagée du service en mémoire
 const jeuService = new JeuService()

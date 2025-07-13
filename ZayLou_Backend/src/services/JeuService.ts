@@ -1,6 +1,6 @@
 // Contient les fonctions de gestion de jeux en mémoire
 
-import { Jeu } from '../core/Jeu'
+import { Jeu } from '../models/Jeu'
 
 /**
  * Service pour gérer les jeux créés par les utilisateurs.
