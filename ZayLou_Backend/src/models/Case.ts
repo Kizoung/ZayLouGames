@@ -10,7 +10,9 @@ export enum CaseType{
   Mur = 'mur',
   Spawn = 'spawn',
   Objectif = 'objectif',
-  Interactif = 'interactif',
+  Interactif = 'interactif', // A voir
+  Personnages ='personnages',
+  Piege = 'piege'
 }
 
 /**

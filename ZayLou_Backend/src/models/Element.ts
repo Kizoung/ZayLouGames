@@ -23,7 +23,7 @@ export class Element {
       this.propriétés = propriétés
     }
 
-      /**
+  /**
    * Déplace l’élément à une nouvelle position.
    */
   deplacer(x: number, y: number): void {
@@ -44,5 +44,5 @@ export class Element {
     return this.propriétés[cle]
   }
 
-  }
+}
   

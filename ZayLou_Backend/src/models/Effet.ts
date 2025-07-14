@@ -16,7 +16,9 @@ export class Effet {
     actions: Action[]
     
     
-    constructor(id: string, nom: string, description: string, type: string, paramètres: Record<string, any>,  trigger: 'tick' | 'deplacement' | 'debutTour' | 'changementAttribut',
+    constructor(id: string, nom: string, description: string, type: string,
+    paramètres: Record<string, any>,  
+    trigger: 'tick' | 'deplacement' | 'debutTour' | 'changementAttribut',
     conditions: Condition[], actions: Action[]) {
         this.id = id
         this.nom = nom

@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
-import type { Cellule } from '../types/types';
+import { useState } from 'react';
+//import type { Cellule } from '../types/types';
+import { useGame } from '../contexts/GameContext';
 import '../styles/Grid.css';
 
-// Les propriétés du composant Grid
+/* Les propriétés du composant Grid
 type Props = {
     // Un tableau en 2 dimensions représentant la grille
     grille: Cellule[][];
     // Fonction pour mettre à jour la grille
     setGrille: React.Dispatch<React.SetStateAction<Cellule[][]>>;
-};
+}; */
 
-export function Grid({ grille, setGrille }: Props) {
+export function Grid() {
+    const { grille, setGrille } = useGame();
     // État local pour savoir si l'utilisateur maintient le clic
     const [isSelecting, setIsSelecting] = useState(false);
 

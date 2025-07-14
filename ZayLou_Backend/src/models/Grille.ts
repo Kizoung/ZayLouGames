@@ -11,7 +11,8 @@ export class Grille {
   tailleCase: number   
   couches: Case[][][]      
 
-  constructor(largeur: number, hauteur: number, tailleCase: number, nbCouches: number = 1) {
+  constructor(largeur: number, hauteur: number, tailleCase: number, 
+  nbCouches: number = 1) {
     this.largeur = largeur
     this.hauteur = hauteur
     this.tailleCase = tailleCase
@@ -34,7 +35,8 @@ export class Grille {
   /**
    * Met à jour une case à la position (x, y) dans une couche donnée
    */
-  setCase(x: number, y: number, coucheIndex: number, caseModifiee: Case): void {
+  setCase(x: number, y: number, coucheIndex: number, 
+  caseModifiee: Case): void {
     if (
       coucheIndex >= 0 && coucheIndex < this.couches.length &&
       y >= 0 && y < this.hauteur &&

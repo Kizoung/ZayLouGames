@@ -1,15 +1,17 @@
 import React from 'react';
 import type { Cellule } from '../types/types';
+import { useGame } from '../contexts/GameContext';
 
-// Définir le type des cellules
+/* Définir le type des cellules
 type Props = {
   grille: Cellule[][];
   setGrille: React.Dispatch<React.SetStateAction<Cellule[][]>>;
-};
+}; */
 
 // Composant pour sélectionner le type de cellule
 // Permet de changer le type des cellules sélectionnées dans la grille
-export function TypeSelector({ grille, setGrille }: Props) {
+export function TypeSelector() {
+  const { grille, setGrille } = useGame();
     // Types disponibles pour les cellules
     const types: (Cellule['type'])[] = ['sol', 'mur', 'objet', 'piege', null];
 

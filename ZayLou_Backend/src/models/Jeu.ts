@@ -25,7 +25,9 @@ export class Jeu {
   configInitiale: any
 
 
-  constructor(id: string, nom: string, auteur: string, grille: Grille, effets: Effet[], description: string,nombreJoueurs: number,regles: string,mode: 'tour'|'pick',assets: string[], configInitiale: any,) {
+  constructor(id: string, nom: string, auteur: string, grille: Grille,
+  effets: Effet[], description: string,nombreJoueurs: number,regles: string,
+  mode: 'tour'|'pick',assets: string[], configInitiale: any,) {
     this.id = id
     this.nom = nom
     this.auteur = auteur
@@ -45,12 +47,13 @@ export class Jeu {
   }
 
   supprimerEffet(idEffet: string):void {
-    this.effets = this.effets.filter(e => e.id !== idEffet )
+    this.effets = this.effets.filter(e => e.id !== idEffet)
   }
 
   mettreAJourConfig(nouvelleConfig: any): void {
     this.configInitiale = nouvelleConfig
   }
+
   changerMode(mode: 'tour' | 'pick'): void {
     if (mode !== 'tour' && mode !== 'pick') {
       throw new Error('Mode invalide.')
@@ -68,7 +71,4 @@ export class Jeu {
       this.effets.length > 0
     )
   }
-  
-  
-  
 }

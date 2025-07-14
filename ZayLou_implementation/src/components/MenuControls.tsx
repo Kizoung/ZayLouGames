@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+//import React, { useState } from 'react';
+import { useGame } from '../contexts/GameContext';
 import '../styles/MenuControls.css';
 
 export function MenuControls() {
-  const [nomJeu, setNomJeu] = useState('');
+  const {nomJeu, setNomJeu, sauvegarder} = useGame();
 
   return (
     <div className="menu-controls">
@@ -18,9 +19,9 @@ export function MenuControls() {
         ▶ Tester
       </button>
 
-      <button className="btn sauvegarder" onClick={() => alert(`Sauvegarder "${nomJeu}"`)}>
+      <button className="btn sauvegarder" onClick={sauvegarder}>
         💾 Sauvegarder
       </button>
     </div>
-);
+  );
 }
