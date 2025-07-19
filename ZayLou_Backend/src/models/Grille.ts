@@ -19,17 +19,26 @@ export class Grille {
     this.couches = []
 
     // Initialiser les couches
-    for (let c = 0; c < nbCouches; c++) {
+    this.couches = Array.from({ length: nbCouches }, (_, coucheIndex) =>
+      Array.from({ length: hauteur}, (_, y) =>
+        Array.from({ length: largeur}, (_, x) =>
+          new Case(x, y, CaseType.Vide, coucheIndex)
+        )
+      )
+    )
+
+    /**for (let c = 0; c < nbCouches; c++) {
       const couche: Case[][] = []
       for (let y = 0; y < hauteur; y++) {
         const ligne: Case[] = []
         for (let x = 0; x < largeur; x++) {
-          ligne.push(new Case(x, y, CaseType.Vide))
+          ligne.push(new Case(x, y, c, CaseType.Vide, c))
         }
         couche.push(ligne)
       }
       this.couches.push(couche)
-    }
+    } */
+
   }
 
   /**
@@ -48,7 +57,7 @@ export class Grille {
 
   /**
    * Récupère une case à la position (x, y) dans une couche donnée
-   */
+  */
   getCase(x: number, y: number, coucheIndex: number): Case | undefined {
     if (
       coucheIndex >= 0 && coucheIndex < this.couches.length &&
@@ -59,4 +68,18 @@ export class Grille {
     }
     return undefined
   }
+
+  /**
+   * Permet de réinitialiser la grille
+   */
+  resetGrille(): void {
+    this.couches = Array.from({ length: this.couches.length }, (_, coucheIndex) =>
+      Array.from({ length: this.hauteur}, (_, y) =>
+        Array.from({ length: this.largeur}, (_, x) =>
+          new Case(x, y, CaseType.Vide, coucheIndex)
+        )
+      )
+    )
+  }
+  
 }
