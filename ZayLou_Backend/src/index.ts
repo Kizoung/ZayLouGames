@@ -4,6 +4,8 @@ import express from 'express'
 //Autoriser les requêtes provenant d'autres domaines
 import cors from 'cors'
 
+import mongoose from 'mongoose'
+
 import jeuRoutes from './routes/jeuRoutes'
 
 
@@ -11,8 +13,15 @@ import jeuRoutes from './routes/jeuRoutes'
 
 // Lire les variables d'environnement
 import dotenv from 'dotenv'
+
 // Charger les variables d'environnement 
 dotenv.config()
+
+mongoose.connect(process.env.MONGO_URI!)
+  .then(() => console.log('✅ Connexion MongoDB réussie'))
+  .catch(err => console.error('❌ Erreur MongoDB :', err))
+
+
 // creer serveur 
 const app = express()
 // Active CORS globalement pour permettre les appels du frontend
