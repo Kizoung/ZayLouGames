@@ -27,3 +27,8 @@ Types script a été créé pour la POO et surtout on peut compiler .js avec typ
 .tsx = Typescript + JSX
 
 Les fichiers .tsx sont pour des composants React/ React Native qui retournent du JSX (balises HTML-like dans du code)
+
+# Pour le uuid
+npm install uuid
+npm install --save-dev @types/uuid
+

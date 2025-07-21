@@ -1,0 +1,2 @@
+PORT=3000
+MONGO_URI=mongodb+srv://lalliadiakite:dnUla2qr14HWM9fP@zayloubd.utzdkei.mongodb.net/?retryWrites=true&w=majority&appName=ZayLouBD

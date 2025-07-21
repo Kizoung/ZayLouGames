@@ -8,6 +8,10 @@ import mongoose from 'mongoose'
 
 import jeuRoutes from './routes/jeuRoutes'
 
+import utilisateurRoutes from './routes/utilisateurRoutes'
+app.use('/utilisateurs', utilisateurRoutes)
+
+
 
 // Lire les variables d'environnement
 import dotenv from 'dotenv'

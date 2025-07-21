@@ -1,6 +1,8 @@
 import { RequestHandler } from 'express'
 import { JeuService } from '../services/JeuService'
+import { genererIdJeuUnique } from "../utils/genererIdUnique";
 import { Jeu } from '../models/Jeu'
+import { UtilisateurModel } from '../models/mongoose/UtilisateurModel'
 
 const jeuService = new JeuService()  // creation instance jeuService
 
@@ -26,7 +28,6 @@ export const getAll: RequestHandler = async (req, res) => {
   
       if (!jeu) {
         res.status(404).json({ erreur: 'Jeu non trouvé' })
-        return 
       }
   
       res.status(200).json(jeu)
@@ -40,13 +41,27 @@ export const getAll: RequestHandler = async (req, res) => {
    */
   export const createJeu: RequestHandler = async (req, res) => {
     try {
-      const nouveauJeu = req.body
-      jeuService.ajouter(nouveauJeu)
-      res.status(201).json(nouveauJeu)
-    } catch (error) {
-      res.status(400).json({ erreur: 'Création du jeu échouée' })
+        const idJeu = await genererIdJeuUnique()
+        const { idUtilisateur, ...reste } = req.body
+    
+        const utilisateur = await UtilisateurModel.findById(idUtilisateur)
+        if (!utilisateur) {
+          res.status(404).json({ erreur: 'Utilisateur non trouvé' })
+          return
+        }
+    
+        const nouveauJeu = { ...reste, id: idJeu }
+        const jeuCree = await jeuService.ajouter(nouveauJeu)
+    
+        utilisateur.jeux.push(idJeu)
+        await utilisateur.save()
+    
+        res.status(201).json(jeuCree)
+      } catch (error) {
+        res.status(400).json({ erreur: 'Création du jeu échouée' })
+      }
     }
-  }
+
   
   /**
    * Met à jour un jeu existant

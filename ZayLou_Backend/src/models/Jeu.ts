@@ -15,7 +15,7 @@ export class Jeu {
   nom: string            
   auteur: string          
   grille: Grille         
-  effets: Effet[]        
+  effets: Effet[]=[]       
   dateCreation: Date     
   description: string
   nombreJoueurs: number
@@ -42,7 +42,7 @@ export class Jeu {
     this.dateCreation = new Date()
   }
 
-  ajouterEffet(effet: Effet): void{
+  ajouterEffet(effet: Effet) :void{
     this.effets.push(effet)
   }
 
