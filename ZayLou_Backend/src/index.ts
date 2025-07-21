@@ -9,8 +9,6 @@ import mongoose from 'mongoose'
 import jeuRoutes from './routes/jeuRoutes'
 
 
-
-
 // Lire les variables d'environnement
 import dotenv from 'dotenv'
 
