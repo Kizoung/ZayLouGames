@@ -1,46 +1,54 @@
-import React from 'react';
-import '../styles/Header.css';
-import creer from '../assets/icons/creer.png';
-import mesJeux from '../assets/icons/mes_jeux.png';
-import effets from '../assets/icons/effets.png';
-import profil from '../assets/icons/profil.png';
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+import creer from '../assets/icons/creer.png'
+import mesJeux from '../assets/icons/mes_jeux.png'
+import effets from '../assets/icons/effets.png'
+import profil from '../assets/icons/profil.png'
 
 export function Header() {
   return (
-    <header className="header">
-
-      <div className="menu">
-
-        <div className="menu-item">
-          <span
-            style={{ fontSize: '1.4rem' }}
-          >
-            ZayLou<br/>Games
-          </span>
+    <header className="border-bottom border-dark px-4 py-3 d-flex
+      align-items-center justify-content-between position-fixed top-0 start-0
+      w-100" 
+      style={{
+        height: '100px',
+        zIndex: 1000,
+        background: 'linear-gradient(to right, #00cfd9, #a259c5)'
+      }}
+    >
+      <div
+        className="d-flex justify-content-between align-items-center w-100"
+        style={{ maxWidth: '1600px' }} 
+      >
+        <div className="text-center fw-bold">
+          <span style={{ fontSize: '1.4rem' }}>ZayLou<br />Games</span>
         </div>
 
-        <div className="menu-item">
-          <img src={creer} alt="Créer jeu" />
-          <span>Créer jeu</span>
+        <div className="text-center fw-bold">
+          <img src={creer} alt="Créer jeu" width={50} height={50} 
+            className="mb-1" />
+          <div>Créer jeu</div>
         </div>
 
-        <div className="menu-item">
-          <img src={mesJeux} alt="Mes jeux" />
-          <span>Mes jeux</span>
+        <div className="text-center fw-bold">
+          <img src={mesJeux} alt="Mes jeux" width={50} height={50} 
+            className="mb-1" />
+          <div>Mes jeux</div>
         </div>
 
-        <div className="menu-item">
-          <img src={effets} alt="Mes effets" />
-          <span>Mes effets</span>
+        <div className="text-center fw-bold">
+          <img src={effets} alt="Mes effets" width={50} height={50} 
+            className="mb-1" />
+          <div>Mes effets</div>
         </div>
 
-        <div className="menu-item">
-          <img src={profil} alt="Mon profil" />
-          <span>Mon profil</span>
+        <div className="text-center fw-bold">
+          <img src={profil} alt="Mon profil" width={50} height={50} 
+            className="mb-1" />
+          <div>Mon profil</div>
         </div>
-
       </div>
     </header>
   );
 }
+
+export default Header;
