@@ -1,0 +1,38 @@
+.case {
+  width: 30px;
+  height: 30px;
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+.case.selected {
+  outline: 2px solid #00F;
+}
+
+.case.mur {
+  background-color: #8B4513;
+}
+
+.case.herbe {
+  background-color: #3CB371;
+}
+
+.case.piege {
+  background-color: #9932CC;
+}
+
+.case.monstre::before {
+  content: '👾';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.case.joueur::before {
+  content: '🧍';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
