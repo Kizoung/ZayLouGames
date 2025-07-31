@@ -58,6 +58,15 @@ export function Grille() {
     )
     clearSelection()
   }
+  // Vérifier si une case a été définie comme "joueur"
+  const hasPlayer = types.includes('joueur')
+
+  // Réinitialiser toute la grille
+  const resetGrille = () => {
+    setTypes(Array(totalCases).fill('vide'))
+    setSelected(Array(totalCases).fill(false))
+  }
+
 
   return (
     <>
@@ -102,10 +111,23 @@ export function Grille() {
 
       <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
         {(['vide', 'mur', 'herbe', 'piege', 'monstre', 'joueur'] as CaseType[]).map((t) => (
-          <button key={t} onClick={() => applyTypeToSelected(t)}>
+          <button 
+            key = {t} 
+            onClick = {() => applyTypeToSelected(t)}
+            disabled = {t === 'joueur' && hasPlayer}
+          >
             {t}
           </button>
         ))}
+        <button 
+          onClick={resetGrille}
+          style = {{
+            backgroundColor: '#FF4D4D',
+            color: "#FFF"
+          }}
+        >
+          Réinitialiser
+        </button>
       </div>
     </>
   )
