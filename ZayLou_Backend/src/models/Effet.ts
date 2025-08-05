@@ -14,6 +14,8 @@ export class Effet {
     trigger: 'tick' | 'deplacement' | 'debutTour' | 'changementAttribut' // etc.
     conditions: Condition[]
     actions: Action[]
+    cumulable: boolean
+    duree: number
     
     
     constructor(id: string, nom: string, description: string, type: string,

@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import * as gameController from '../controllers/jeuControllers'
+import { verifyToken } from '../middlewares/AuthMiddleware'
 
 
 // creation du routeur
@@ -12,12 +13,16 @@ router.get('/', gameController.getAll)
 router.get('/:id', gameController.getById)
 
 // Crée un nouveau jeu
-router.post('/', gameController.createJeu)
+//router.post('/', gameController.createJeu)
 
 // Met à jour un jeu
-router.put('/:id', gameController.updateJeu)
+//router.put('/:id', gameController.updateJeu)
 
 // Supprime un jeu
-router.delete('/:id', gameController.deleteJeu)
+//router.delete('/:id', gameController.deleteJeu)
+
+router.post('/', verifyToken, gameController.createJeu)
+router.put('/:id', verifyToken, gameController.updateJeu)
+router.delete('/:id', verifyToken, gameController.deleteJeu)
 
 export default router

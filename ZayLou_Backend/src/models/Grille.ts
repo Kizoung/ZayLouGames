@@ -1,4 +1,5 @@
 import { Case, CaseType } from './Case'
+import { EffetActif } from '../types/EffetActif'
 
 /**
  * Représente la grille de jeu.
@@ -8,7 +9,8 @@ import { Case, CaseType } from './Case'
 export class Grille {
   largeur: number         
   hauteur: number         
-  tailleCase: number   
+  tailleCase: number  
+  effets: EffetActif[] = [] 
   couches: Case[][][]      
 
   constructor(largeur: number, hauteur: number, tailleCase: number, 

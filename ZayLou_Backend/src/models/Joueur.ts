@@ -1,5 +1,6 @@
 import { Effet } from './Effet'
 import { Action } from './Action'
+import { EffetActif } from '../types/EffetActif'
 
 /**
  * Représente un joueur dans le jeu.
@@ -12,6 +13,7 @@ export class Joueur {
     pointsDeVie: number
     effetsActifs: Effet[]
     actionsPossibles: Action[]
+    effets: EffetActif[] = []
 
     constructor(id: string, nom: string, pointsDeVie: number = 100) {
         this.id = id
@@ -45,4 +47,7 @@ export class Joueur {
             console.log(`${this.nom} a été éliminé !`)
         }
     }
+
+   
+      
 }

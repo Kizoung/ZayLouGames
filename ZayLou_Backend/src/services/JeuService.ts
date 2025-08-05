@@ -1,5 +1,6 @@
 // Contient les fonctions de gestion de jeux en mémoire
 
+import { Effet } from '../models/Effet'
 import { Jeu } from '../models/Jeu'
 
 

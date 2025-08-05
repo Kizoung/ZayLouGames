@@ -2,8 +2,10 @@ import mongoose from 'mongoose'
 
 const utilisateurSchema = new mongoose.Schema({
   idUtilisateur: { type: Number, unique: true },
+  email: { type: String, required: true, unique: true },
   nom: String,
   jeux: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Jeu' }],
+  motDePasse: { type: String, required: true },
   effets: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Effet' }]
 }, { timestamps: true })
 
