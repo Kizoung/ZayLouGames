@@ -25,10 +25,10 @@ function RegisterScreen(){
                 throw new Error("Erreur lors de l'inscription");
             }
 
-            const data = await response.json();
-            setToken(data.token);
-            setUtilisateur(data.utilisateur);
-            setAuteurId(data.utilisateur._idUtilisateur);
+            const utilisateur = await response.json();
+            setToken(utilisateur.token);
+            setUtilisateur(utilisateur);
+            setAuteurId(utilisateur._idUtilisateur);
             setMessage("Inscription réussie !");
         } catch (error) {
             console.error(error);

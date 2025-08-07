@@ -1,16 +1,13 @@
 import { Router } from 'express'
-import * as gameController from '../controllers/jeuControllers'
+import { getAll, getById, createJeu, updateJeu, deleteJeu } from '../controllers/jeuControllers'
+
 import { verifyToken } from '../middlewares/AuthMiddleware'
 
 
 // creation du routeur
 const router : Router=Router()
 
-// Lister tous les jeux
-router.get('/', gameController.getAll)
 
-// Recuperer jeu par son ID
-router.get('/:id', gameController.getById)
 
 // Crée un nouveau jeu
 //router.post('/', gameController.createJeu)
@@ -21,8 +18,10 @@ router.get('/:id', gameController.getById)
 // Supprime un jeu
 //router.delete('/:id', gameController.deleteJeu)
 
-router.post('/', verifyToken, gameController.createJeu)
-router.put('/:id', verifyToken, gameController.updateJeu)
-router.delete('/:id', verifyToken, gameController.deleteJeu)
+router.get('/', getAll)
+router.get('/:id', getById)
+router.post('/', verifyToken, createJeu)
+router.put('/:id', verifyToken, updateJeu)
+router.delete('/:id', verifyToken, deleteJeu)
 
 export default router

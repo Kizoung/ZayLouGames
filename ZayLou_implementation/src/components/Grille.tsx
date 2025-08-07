@@ -5,7 +5,9 @@ import { useGame } from '../contexts/GameContext'
 
 export function Grille() {
   // Dimension de la grille
+  const colonnes = 30 
   const lignes = 10
+  
   const totalCases = lignes * colonnes
 
   // Contient de le type de chacune des cases

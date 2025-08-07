@@ -7,7 +7,7 @@ import RegisterScreen from '../RegisterScreen'
 function LoginScreen(){
     const [email, setEmail] = useState('')
     const [motDePasse, setMotDePasse] = useState('')
-    const {token, setToken} = useUser()
+    const {token, setToken, setUtilisateur} = useUser()
     const [jeux, setJeux] = useState([])
     const {setAuteurId} = useGame()
     const[showRegister, setShowRegister] = useState(false)
@@ -16,7 +16,7 @@ function LoginScreen(){
         try{
             const {utilisateur,token} = await login(email, motDePasse)
             setToken(token)
-            utilisateur(utilisateur)
+            setUtilisateur(utilisateur)
             setAuteurId(utilisateur._idUtilisateur)
             const mesJeux = await getMesJeux(token)
             setJeux(mesJeux)
@@ -58,4 +58,4 @@ function LoginScreen(){
       </p>
     </div>
   )
-}  
+}  export default LoginScreen
