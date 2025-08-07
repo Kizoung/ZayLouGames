@@ -1,17 +1,15 @@
 import { useState, useRef } from 'react'
 import Case from './Case'
 import type { CaseType } from '../types/types'
+import { useGame } from '../contexts/GameContext'
 
 export function Grille() {
   // Dimension de la grille
   const lignes = 10
-  const colonnes = 30
   const totalCases = lignes * colonnes
 
   // Contient de le type de chacune des cases
-  const [types, setTypes] = useState<CaseType[]>(
-    Array(totalCases).fill('vide')
-  )
+  const {types, setTypes} = useGame()
   // Indique si les cases sont sélectionnées ou non
   const [selected, setSelected] = useState<boolean[]>(
     Array(totalCases).fill(false)

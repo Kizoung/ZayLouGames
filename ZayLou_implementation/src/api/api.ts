@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:7070/api'
+const API_URL = 'http://localhost:3000/api'
 
 export async function login(email: string, motDePasse: string): Promise<{ utilisateur: any, token: string }> {
   const res = await fetch(`${API_URL}/utilisateurs/login`, {

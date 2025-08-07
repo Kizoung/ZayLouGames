@@ -21,7 +21,7 @@ app.use(cors())
 // Permettre au serveur de lire les données JSON envoyées dans les requêtes (POST/PUT)
 app.use(express.json())
 
-app.use('/utilisateurs', utilisateurRoutes)
+app.use('/api/utilisateurs', utilisateurRoutes)
 app.use('/api/jeux', jeuRoutes)
 
 // Route GET de test à la racine 
