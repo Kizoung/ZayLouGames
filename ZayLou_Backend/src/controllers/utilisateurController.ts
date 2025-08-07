@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { UtilisateurModel } from '../models/mongoose/UtilisateurModel'
 import { v4 as uuidv4 } from 'uuid'
 import { UtilisateurService } from '../services/UtilisateurService'
+import Jwt  from 'jsonwebtoken'
 
 export async function creerUtilisateur(req: Request, res: Response): Promise<void> {
   try {
@@ -9,8 +10,21 @@ export async function creerUtilisateur(req: Request, res: Response): Promise<voi
       ...req.body,
       idUtilisateur: uuidv4()
     }
+
     const utilisateurCree = await UtilisateurModel.create(nouveau)
-    res.status(201).json(utilisateurCree)
+
+    // Générer un token comme dans login()
+    const token = Jwt.sign(
+      { idUtilisateur: utilisateurCree.idUtilisateur },
+      process.env.JWT_SECRET as string,
+      { expiresIn: '1d' }
+    )
+
+    console.log("Utilisateur inscrit :", utilisateurCree)
+
+    // debug: renvoyer token + utilisateur
+    res.status(201).json({ token, utilisateur: utilisateurCree })
+
   } catch (error) {
     res.status(500).json({ erreur: "Erreur lors de la création." })
   }
