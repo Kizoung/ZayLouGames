@@ -1,0 +1,478 @@
+\documentclass[12pt]{article}        % Classe de document: rapport
+
+\usepackage[french]{babel}          % Langue du document: français
+\usepackage[utf8]{inputenc}         % Encodage du document: UTF-8
+\usepackage[T1]{fontenc}            % Encodage des polices: T1 
+\usepackage{fancybox}               % Boîtes de texte stylisées
+\usepackage{hyperref}               % Liens hypertexte
+\usepackage{color}                  % Couleurs
+\usepackage{setspace}               % Interligne
+\usepackage{graphicx}               % Images
+\usepackage{float}                  % For [H] float placement
+
+\begin{document}                    % Début du document
+
+% PAGE DE GARDE
+\begin{titlepage}
+    \centering
+
+    \Huge\textbf{ZayLou Games}\\
+    \LARGE Créer son propre jeu sans coder\\[2cm]
+
+    \textbf{Lallia Diakité \& Marc Olivier Jean Paul} \\[2cm]
+
+    IFT3150 - Projet d'informatique - Été 2025\\[2cm]
+
+    \textbf{Superviseur :} Louis-Édouard Lafontant\\[2cm]
+
+    Département d’informatique et de recherche opérationnelle\\[1cm] 
+    Université de Montréal\\[1cm]
+
+    \vfill
+
+    {\large Date : \today}
+\end{titlepage}
+
+% TABLE DES MATIÈRES
+\tableofcontents                    % Génération de la table des matières
+\newpage                            % Nouvelle page
+
+
+\section{Introduction}              % Section 1: Introduction
+\label{sec:intro}                   % Étiquette de la section
+Ce document présente les avancées faites dans le projet \textbf{ZayLou Games}, 
+dans le cadre du cours IFT3150 - Projet d'informatique de l'Université de Montréal
+à l'été 2025.
+
+\subsection{Contexte}               % Sous-section 1.1: Contexte
+\label{subsec:contexte}             % Étiquette de la sous-section
+Si de nos jours, plusieurs plateformes permettent de créer des jeux-vidéos
+sans avoir à écrire du code, beaucoup d'entre elles sont assez compliquées 
+à prendre en main. Pour le reste, elles sont souvent limitées en termes de
+fonctionnalités: elles ne permettent pas l'interaction physique dans le jeu.
+
+Certaines technologies permettent les interactions physiques dans les jeux-vidéos,
+mais ne sont pas très connues ou utilisées. Il serait donc intéressant de
+pouvoir les utiliser lors d'une partie de jeu, afin de rendre l'expérience
+de jeu plus immersive et interactive.
+
+\subsection{Problématiques et motivations}               % Sous-section 1.2: Contexte
+\label{subsec:Problématiques et motivations}             % Étiquette de la sous-section
+Même avec le grands nombre de plateformes de création de jeux-vidéos
+disponibles, il est difficile de trouver une plateforme qui soit:
+\begin{itemize}
+    \item Simple à prendre en main, sans avoir à écrire de code;
+    \item Permettant de créer des jeux-vidéos avec des interactions physiques;
+    \item Accessible à tous, sans avoir à passer par des étapes compliquées
+          ou des configurations complexes.
+\end{itemize}
+Ce sont ces problématiques qui nous ont incités à travailler sur \textbf{ZayLou Games}.
+Notre motivations est de permettre à tout le monde de créer son propre jeu-vidéo
+sans avoir à écrire de code, tout en apportant une couche d'originalité avec les interactions
+physiques.
+
+\subsection{Objectifs}               % Sous-section 1.3: Objectifs
+\label{subsec:objectifs}             % Étiquette de la sous-section
+Avec \textbf{ZayLou Games}, nous avons pour objectif de permettre à tout le monde
+de créer son propre jeu-vidéo en 2D sur une plateforme web intuitive, de jouer au jeu
+créé à l'aide d'une application mobile, et d'utiliser la technologie NFC
+pour permettre des interactions physiques dans le jeu.
+
+\newpage                            % Nouvelle page
+
+\section{Analyse des besoins et étude préliminaire}              % Section 2: Analyse des besoins et étude préliminaire
+\label{sec:Analyse}                                              % Étiquette de la section
+Comme pour tout projet, il est important de commencer par une analyse des besoins
+et une étude préliminaire. Nous avons donc passé plusieurs semaines à itérer sur 
+les besoins du projet.
+
+\subsection{Exigences fonctionnelles et non-fonctionnelles}              % Sous-section 2.1: Exigences fonctionnelles et non-fonctionnelles
+\label{subsec:Exigences}          
+Voici la liste des exigences que la plateforme doit supporter:
+
+\subsubsection{Exigences fonctionnelles}
+\label{subsubsec:fonctionnelles}  
+L'utilisateur doit pouvoir créer un jeu simple. Lors de la création,
+il doit pouvoir donner un nom, une description et une catégorie au jeu,
+sélectionner une ou plusieurs cases de la grille pour définir des éléments
+dans le jeu (comme la position de départ du joueur, les pièges, etc).
+L'utilisateur doit aussi pouvoir ajuster les dimensions des objets définis 
+dans la grille, et ajouter des conditions logiques pour enrichir la 
+dynamique du jeu. Il peut aussi cumuler des effets jusqu'à un certain point,
+et même superposer des effets (par exemple, appliquer plusieurs effets en 
+même temps).
+
+Il faut aussi que l'utilisateur ait la possibilité de consulter tous 
+les jeux qu'il a créés. Il doit pouvoir y jouer à l'aide
+de l'application mobile. Il pourra également scanner une carte NFC,
+pour déclencher un effet associé dans le jeu.
+
+La plateforme web doit fournir à l'utilisateur une grille interactive
+pour la création de son jeu. La grille sera composée de cases qui 
+devront permettre à l'utilisateur de définir ses éléments de jeu.
+La plateforme doit aussi permettre à l'utilisateur non seulement de créer 
+les effets qu'il veut mettre dans son jeu, mais aussi de les sauvegarder
+pour les réutiliser dans d'autres jeux. Il est aussi important que la 
+plateforme web permette à l'utilisateur de sauvegarder son avancée dans la 
+création de son jeu de manière à ce qu'il puisse récupérer l'état de la grille
+tel qu'il l'avait laissé avant la sauvegarde.
+
+Quant à l'application mobile, elle doit pouvoir authentifier l'utilisateur
+et synchroniser ses jeux avec le backend de manière à ce qu'il puisse les
+retrouver. Une autre exigence fonctionnelle serait d'interpréter et d'évaluer
+les conditions logiques pour déclencher les effets selon le contexte du jeu. 
+Il faut aussi que l'utilisateur puisse scanner les cartes NFC et que l'application
+extraie l'identifiant et déclenche en temps réel l'effet correspondant dans la
+session de jeu.
+
+\subsubsection{Exigences non fonctionnelles}
+\label{subsubsec:non fonctionnelles}  
+Le processus de création de jeu doit être simple et intuitif, même
+pour un utilisateur non expérimenté. Il doit aussi être conçu pour 
+éviter toute complexité excessive: l'utilisateur doit clairement
+savoir où aller pour avoir ce qu'il veut, même à la première utilisation.
+L'ajout de nouveaux effets doit être fluide et rapide, sans nécessiter de
+connaissances techniques avancées. L'interface utilisateur doit rester
+ergonomique, même avec un grand nombre d'éléments dans le jeu.
+
+Les données échangées entre l'application (mobile/web) et le backend
+doivent être chiffrées et protégées contre les interceptions
+(en utilisant l'authentification par JWT par exemple). Les requêtes API
+doivent être protégées contre les accès non autorisés. Il fuadra donc 
+toujours faire une vérification de l'identité de l'utilisateur et 
+contrôler les droits d'accès aux ressources.
+
+La plateforme mobile doit être conçue pour être compatible avec les 
+systèmes IOS et Android. Il faut aussi que chaque composant logiciel
+(API, interface, etc.) soit testable indépendamment de manière à
+faciliter les tests unitaires et les tests d'intégration. Le système doit
+pouvoir supporter l'ajout fréquent de nouveaux jeux ou effets sans dégradation 
+notable des performances. 
+
+\subsection{Méthodologie utilisée}
+\label{Méthodologie}
+Nous avons décidé d'utiliser la méthodologie Agile pour le développement de la plateforme.
+Cette méthodologie nous permet de travailler de manière itérative et incrémentale,
+ce qui est idéal pour un projet de cette envergure.
+Nous avons donc commencé par définir les exigences fonctionnelles et non-fonctionnelles, puis nous avons
+continué avec le prototype figma de la plateforme web.
+
+Nous avions aussi organisé des réunions hebdomadaires avec le Superviseur pour discuter de l'avancement
+du projet et des problèmes rencontrés. Pour le développement, nous avons utilisé GitHub pour
+gérer le code source et les versions du projet. Vu que nous sommes deux dans le projet,
+côté implémentations, l'un de nous s'est occupé de la partie backend et l'autre de la partie frontend.
+
+\subsection{Étude de solutions similaires ou existantes}
+\label{Étude de solutions}
+Il existe plusieurs plateformes qui permettent de créer des jeux-vidéos sans avoir à écrire de code.
+Parmi elles, on peut citer: \textbf{Scratch}, \textbf{Unity Playground}, \textbf{Gamefroot}, etc. 
+Nous avons fait quelques recherches, regarder quelques vidéos pour comprendre comment fonctionnent 
+ces plateformes, et c'est à partir de là que nous sommes arrivées à la conclusion que la plupart de 
+ces plateformes sont assez complexes à prendre en main. De plus, même si elles présentent de nombreuses 
+fonctionnalités, certaines de ces dernières ne sont pas évidentes à trouver, ce qui contribue à diminuer 
+l'efficience du processus de création.
+
+Autre point important, la plupart de ces plateformes ne donnent pas à l'utilisateur une liberté totale:
+En effet, l'utilisateur ne peut qu'utiliser les objets prédéfinis par la plateforme, et ne peut pas
+ajouter de nouveaux objets ou effets. 
+
+C'est donc en partant de ce constat que nous nous sommes mis à chercher des innovatoions à apporter
+à la plateforme. Nous avons donc décidé que l'utilisateur doit pouvoir créer et ajouter ses 
+propres effets au jeu, et que la plateforme doit permettre des interactions physiques avec le scan des
+cartes NFC.
+
+\section{Conception}
+\label{sec:Conception}             
+La conception de la plateforme a été faite en plusieurs étapes.
+Nous avons commencé par définir l'architecture de la plateforme, puis nous avons créé un prototype figma
+de la plateforme web. Ensuite, nous avons commencé à implémenter la plateforme en utilisant les technologies
+les plus adaptées à nos besoins.
+
+\subsection{Architecture du système}
+\label{subsec:Architecture}
+Voici le diagramme de l'architecture du système:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammeC4.jpg}
+    \caption{Diagramme C4 de l'architecture du système}
+    \label{fig:diagramme C4}
+\end{figure} 
+
+L'architecture du projet est basée sur une séparation claire entre les 
+différentes couches de la plateforme, assurant une bonne organisation des
+responsabilités. 
+
+L'utilisateur peut adopter deux rôles distincts:
+En tant que créateur, il interagit avec la plateforme web pour concevoir, 
+sauvegarder et configurer ses jeux. Cette plateforme envoie des 
+requêtes HTTP vers le Backend API, qui centralise les opérations côté 
+serveur.
+
+Ensuite, en tant que joueur, il utilise l'application mobile pour jouer
+aux jeux déjà créés et intéragir avec des cartes physiques via la 
+technologie NFC. L'application mobile, permettra aux joueurs 
+de jouer à leurs jeux, de scanner des cartes NFC à l'aide d'un 
+NFC Controller et de synchroniser les états du jeu avec le backend 
+via des requêtes API.
+
+Lorsqu'une carte NFC est scannée, le NFC Controller lit son identifiant, 
+qui est ensuite envoyé au backend via l'application mobile. Le backend 
+identifie alors l’effet associé et l’applique via le Effect Service.
+
+Le Backend API centralise toute la logique métier. Il reçoit les 
+requêtes de la plateforme web ou de l'application mobile, et se charge
+de l'enregistrement et de la récupération des jeux via le GameController,
+de l'application des effets dynamiques via l'Effect Service et de la 
+gestion des comptes utilisateurs avec le User Service.
+Toutes les données persistantes sont stockées dans une base de données
+reliée directement au Backend.
+
+\subsection{Modèle de données}
+\label{subsec:modèle de données}
+Le modèle de données du système repose sur une architecture orientée objet et un stockage en base de données NoSQL.
+Les données échangées avec le frontend et le backend sont transformées en JSON. Cela facilitera leur intégration
+dans les requêtes API et leur stockage dans la base de données.
+
+\subsubsection{Structure et entités principales}
+\label{subsubsec:structure et entités principales}
+Le système définit plusieurs entités principales, voici le diagramme qui
+le montre clairement:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width= \textwidth]{relation.jpg}
+    \caption{Diagramme de classes du système}
+    \label{fig:diagramme de classes}
+\end{figure}
+
+\newpage
+
+\begin{itemize}
+    \item \textbf{Jeu} : représente un jeu créé par un utilisateur. Il 
+    contient un \texttt{id}, un \texttt{nom}, une \texttt{description}, 
+    un \texttt{créateur}, une \texttt{grille} pour construire le jeu , 
+    une \texttt{date de création},  une liste d'\texttt{effets}, et un 
+    ensemble de \texttt{règles}.
+
+    \item \textbf{Grille} : représente la structure de jeu définie par 
+    l'utilisateur. Elle possède une \texttt{largeur}, une 
+    \texttt{hauteur}, et des \texttt{couches} qui sont des ensembles de 
+    \texttt{cases}. Chaque case peut contenir un \texttt{élément} 
+    (joueur, NPC, objet) et des \texttt{effets}.
+
+    \item \textbf{Case} : représente une case de la grille, avec des 
+    attributs comme les \texttt{coordonnées}, le \texttt{type} de
+    la case et les \texttt{effets} associés. Le type de la case signifie 
+    son rôle dans le jeu (vide, piège, obstacle, etc.).
+
+    \item \textbf{CartNFC} : représente un élément NFC scannable, avec 
+    un \texttt{id}, un \texttt{nom} et un \texttt{effet}.
+  
+    \item \textbf{Effet} : décrit une action déclenchée dans le jeu, 
+    avec un \texttt{déclencheur} (déplacement, interaction...), 
+    des \texttt{conditions} à vérifier et des \texttt{actions} 
+    à exécuter. Chaque effet possède ausi une \texttt{description}.
+
+    \item \textbf{Utilisateur} : Représente toute personne utilisant soit
+    l'application mobile, soit la plateforme web. Il possède un 
+    \texttt{id} et un \texttt{nom}.
+  
+    \item \textbf{Joueur} : Une spécialisation de l'utilisateur. Il 
+    représente celui qui utilise l'application mobile. Il possède en plus 
+    des attributs de l'utilisateur, les effets actifs et les actions
+    possibles dans le jeu.
+
+    \item \textbf{Créateur} : Une autre spécialisation de l'utilisateur.
+    Il s'agit de l'utilisateur qui utilise la plateforme web pour créer
+    un jeu. Il possède comme attributs, ceux de l'utilisateur et ses jeux 
+    créés.
+  
+    \item \textbf{Action} : Représente les actions que le joueur peut 
+    accomplir dans son jeu.
+
+    \item \textbf{Condition} : Permet de vérifier si un effet où une 
+    règle doit être déclenché.
+
+    \item \textbf{Règle} : Décrit des comportements généraux du jeu
+\end{itemize}
+
+\subsection{Choix technologiques: justifications, contraintes 
+et alternatives}
+\label{subsec:Choix technologiques}
+Pour le développement de la plateforme, nous avons choisi de partir 
+sur la division suivante:
+
+\subsubsection{Frontend}
+\label{subsubsec:Frontend}
+Pour le frontend, nous avons décidé d'utiliser React. Il s'agit 
+d'un framework très populaire et facile à prendre en main. 
+React est idéal pour ce projet car il permet de créer des interfaces 
+utilisateur dynamiques et réactives, ce qui répond parfaitement
+aux besoins du projet. En effet, la plateforme web comporte une
+grille avec lqauelle l'utilisateur intéragira pour créer son jeu.
+C'est donc pour cela que React est une bonne option.
+
+\subsubsection{Backend}
+\label{subsubsec:Backend}
+Pour le backend, c'est avec Node.js avec Express.js que nous avons
+décidé de travailler. Node.js est une plateforme JavaScript côté serveur 
+qui permet de créer des applications web performantes et scalables.
+Express.js quant à lui est un framework minimaliste pour Node.js qui 
+facilite la création d'API REST.
+Node.js est très prisé pour les applications en temps réel et avec
+beaucoup d'entrées/sorties. De son côté, Express.js facilite la gestion
+requêtes et la création des routes. Tout ceci montre pourquoi Node.js et 
+Express.js sont de bons choix pour ce projet.
+
+\subsubsection{Base de données}
+\label{subsubsec:Base de données}
+Pour la base de données, nous avons choisi d'utiliser MongoDB.
+MongoDB est une base de données NoSQL orientée document qui permet 
+de stocker des données sous forme de JSON. Elle est très flexible et 
+permet de stocker des données de manière non structurée, ce qui est idéal 
+pour notre projet. De plus, MongoDB est très performante et permet de 
+gérer de grandes quantités de données facilement.
+
+\subsection{Prototype ou maquette de l’interface}
+\label{subsec:Prototype}
+Pour la conception de l'interface utilisateur, nous avons utilisé Figma 
+pour créer un prototype interactif de la plateforme web. Le prototype 
+permet de visualiser l'interface utilisateur, les différentes pages et 
+les interactions possibles. Voici le lien vers le prototype 
+Figma: \href{https://www.figma.com/design/eKXFDHbDRlhK4KngvE7KGb/
+ZayLou_Games?node-id=0-1&t=n9lvoJhYaFOCaRAi-1}{ZayLou Figma}
+
+\newpage                            % Nouvelle page
+
+\section{Implémentation / Réalisation technique}
+\label{sec:Implémentation}
+L'implémentation de la plateforme a été faite en plusieurs étapes.
+Nous avons commencé par mettre en place l'architecture du projet, 
+puis nous avons implémenté le backend, la base de données, le frontend, 
+le tout en parallèle. Cependant, nous nous sommes beaucoup concentrés 
+sur le backend, car c'est lui qui gère la logique du jeu  et les 
+interactions avec la base de données. De ce fait, il est beaucoup 
+plus complet que le frontend, qui est encore en cours de développement.
+
+\subsection{Présentation synthétique de l’implémentation}
+\label{subsec:Présentation synthétique}
+L’implémentation repose sur une architecture MERN: le frontend en React 
+permet de manipuler la grille en temps réel, le backend en 
+Node.js et Express expose une API REST, et les données sont stockées dans 
+MongoDB via Mongoose. Les communications se font par des requêtes HTTP. 
+Les principales fonctionnalités déjà en place incluent l’édition 
+dynamique de la grille pour le frontend et l'exécution des requêtes
+et les appels à la base de données pour le backend.
+
+\subsection{Particularités vis-à-vis de la conception et autre 
+contraintes}
+\label{subsec:Particularités}
+L’une des particularités de la conception a été de générer des
+identifiants numériques uniques plutôt que d’utiliser les ObjectId 
+MongoDB par défaut, afin d’offrir une meilleure lisibilité et gestion 
+côté client et surtout car MongoDB ne fournit pas l'auto-incrémentation
+des IDs. Le projet a aussi dû respecter certaines contraintes 
+pédagogiques imposées (architecture MERN, API REST), et nous avons dû 
+gérer cela dans un délai serré.
+
+\subsection{Flux principaux}
+\label{subsec:Flux principaux}
+Nous avions fait un diagramme de séquence qui montre comment se déroule 
+l'ajout des effets dans le jeu. Ce diagramme montre les différentes 
+étapes du processus, depuis le scan de la carte NFC jusqu'à l'application 
+de l'effet dans le jeu:
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{sequence.jpg}
+    \caption{Diagramme de séquence pour l'application des effets}
+    \label{fig:sequence effet}
+\end{figure}
+
+Lorsque l'utilisateur scanne la carte, Le frontend récupère les 
+informations de la carte et envoie une requête HTTP vers le backend pour 
+transmettre les données scannées. Le backend reçoit la requête et traite 
+les informations : il peut identifier le type de carte, rechercher les 
+effets associés, mettre à jour l’état du jeu, etc. Ensuite, il renvoie 
+une réponse au frontend contenant les effets à appliquer. Le frontend 
+applique les effets visuellement (changements d’état dans le jeu), 
+puis le joueur continue à jouer avec le nouveau contexte.
+
+\vspace{1cm}
+
+Voici un autre diagramme de séquence qui montre comment se passe la 
+sauvegarde d'un jeu dant le système:
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{saveJeu.jpg}
+    \caption{Diagramme de séquence pour la sauvegarde d'un jeu}
+    \label{fig:sequence sauvegarder}
+\end{figure}
+
+Une fois que l'utilisateur appuie sur sauvegarder après avoir modifié 
+la grille, Le frontend récupère alors l’état actuel du jeu (grille, 
+effets, règles, etc.) et l’envoie au backend via une requête HTTP POST.
+Le backend reçoit cette requête, valide les données reçues pour s'assurer 
+de leur cohérence, puis transmet la commande de mise à jour à la base de 
+données MongoDB. Une fois la sauvegarde effectuée avec succès, le backend
+renvoie un message de confirmation au frontend, qui se charge alors 
+d’afficher un message de succès à l’utilisateur, l’informant que le jeu a 
+bien été enregistré.
+
+\subsection{Description détaillée des composants principaux}
+
+\section{Évaluation}
+
+\subsection{Tests unitaires et fonctionnels réalisés}
+
+\subsection{Évaluation de performance}
+
+\subsection{Évaluation d'utilisabilité}
+
+\subsection{Comparaison avec les objectifs initiaux}
+
+\section{Discussion critique}
+Le projet \textbf{ZayLou Games} n'a pas été aussi complet 
+qu'on l'aurait voulu, notemment en raison du temps limité, des
+contraintes techniques et du volume de fonctionnalités envisagées.
+
+\subsection{Analyse critique de la solution développée}
+Ls solution développée permet à un utilisateur de définir les 
+éléments sur la grille en sélectionnant les cases et en choisissant
+leur type  (mur, vide, piège…). Elle reste cependant incomplète car 
+même si le système déffets et de règles est bien structuré côté backend
+(via une architecture orientée objet avec Effet, Condition, Action, 
+Regle), il n'est pas encore exploité côté interface utilisateur.
+De plus, la partie multijoueur initialement envisagée via WebSocket
+n'a pas pu être intégrée.
+
+Sur le plan technique, le choix du stack MERN (MongoDB, Express, React, 
+Node.js) aurait permis une bonne cohérence des technologies, une 
+communication  fluide entre le frontend et le backend si cela avait été 
+implémenté, et une structure modulable. Toutefois, certaines 
+fonctionnalités comme la gestion d’historique, la duplication de scènes 
+ou le partage de jeux restent à implémenter.
+
+\subsection{Problèmes rencontrés et solutions mises en place}
+
+\subsection{Ce que vous auriez fait différemment avec plus de temps ou 
+de ressources}
+Avec plus de temps ou plus de ressources, plusieurs améliorations 
+auraient été apportées: pour l'interface utilisateur, nous aurions pu
+envisager l'ajout d’un vrai éditeur visuel d’effets, de règles et de 
+scènes, avec glisser-déposer, menus contextuels et infobulles. Ce qui 
+aurait rendu la création de jeux plus fluide. Sans oublier une
+interface de test de jeu que nous aurions pu mettre en place pour que
+l'utilisateur puisse exécuter sa scène comme un vrai jeu.
+
+Nous aurions pu intégrer des WebSockets pour permettre à plusieurs 
+utilisateurs de créer un jeu en même temps ou de se connecter pour jouer 
+ensemble.
+
+En plus de l'application mobile que nous aurions pu développée, nous 
+aurions pu permettre à l’utilisateur d’enregistrer un jeu localement ou 
+de partager un lien vers son jeu avec d’autres joueurs.
+
+\end{document}                      % Fin du documents

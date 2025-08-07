@@ -1,0 +1,34 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Contexte}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Problématiques et motivations}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Objectifs}{3}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Analyse des besoins et étude préliminaire}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Exigences fonctionnelles et non-fonctionnelles}{4}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Exigences fonctionnelles}{4}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Exigences non fonctionnelles}{5}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}Méthodologie utilisée}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Étude de solutions similaires ou existantes}{6}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Conception}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Architecture du système}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Modèle de données}{8}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Structure et entités principales}{8}{subsubsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.3}Choix technologiques: justifications, contraintes et alternatives}{9}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Frontend}{10}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Backend}{10}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Base de données}{10}{subsubsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.4}Prototype ou maquette de l’interface}{10}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Implémentation / Réalisation technique}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Présentation synthétique de l’implémentation}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Particularités vis-à-vis de la conception et autre contraintes}{11}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Flux principaux}{11}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Description détaillée des composants principaux}{14}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Évaluation}{14}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Tests unitaires et fonctionnels réalisés}{14}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Évaluation de performance}{14}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Évaluation d'utilisabilité}{14}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Comparaison avec les objectifs initiaux}{14}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Discussion critique}{14}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Analyse critique de la solution développée}{14}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Problèmes rencontrés et solutions mises en place}{15}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Ce que vous auriez fait différemment avec plus de temps ou de ressources}{15}{subsection.6.3}%
