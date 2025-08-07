@@ -19,7 +19,8 @@
     \Huge\textbf{ZayLou Games}\\
     \LARGE Créer son propre jeu sans coder\\[2cm]
 
-    \textbf{Lallia Diakité \& Marc Olivier Jean Paul} \\[2cm]
+    \textbf{Lallia Diakité: 20256054 \\
+     Marc Olivier Jean Paul: 20241763} \\[2cm]
 
     IFT3150 - Projet d'informatique - Été 2025\\[2cm]
 
@@ -38,55 +39,59 @@
 \newpage                            % Nouvelle page
 
 
-\section{Introduction}              % Section 1: Introduction
-\label{sec:intro}                   % Étiquette de la section
-Ce document présente les avancées faites dans le projet \textbf{ZayLou Games}, 
-dans le cadre du cours IFT3150 - Projet d'informatique de l'Université de Montréal
-à l'été 2025.
+\section{Introduction}              
+\label{sec:introduction}       
+Ce document présente les avancées faites dans le projet \textbf{ZayLou 
+Games}, dans le cadre du cours IFT3150 - Projet d'informatique de 
+l'Université de Montréal à l'été 2025.
 
-\subsection{Contexte}               % Sous-section 1.1: Contexte
-\label{subsec:contexte}             % Étiquette de la sous-section
-Si de nos jours, plusieurs plateformes permettent de créer des jeux-vidéos
-sans avoir à écrire du code, beaucoup d'entre elles sont assez compliquées 
-à prendre en main. Pour le reste, elles sont souvent limitées en termes de
-fonctionnalités: elles ne permettent pas l'interaction physique dans le jeu.
+\subsection{Contexte}               
+\label{subsec:contexte}             
+Si de nos jours, plusieurs plateformes permettent de créer des 
+jeux-vidéos sans avoir à écrire du code, beaucoup d'entre elles sont 
+assez compliquées à prendre en main. Pour le reste, elles sont souvent 
+limitées en termes de fonctionnalités: elles ne permettent pas 
+l'interaction physique dans le jeu.
 
-Certaines technologies permettent les interactions physiques dans les jeux-vidéos,
-mais ne sont pas très connues ou utilisées. Il serait donc intéressant de
-pouvoir les utiliser lors d'une partie de jeu, afin de rendre l'expérience
-de jeu plus immersive et interactive.
+Certaines technologies permettent les interactions physiques dans les 
+jeux-vidéos, mais ne sont pas très connues ou utilisées. Il serait donc 
+intéressant de pouvoir les utiliser lors d'une partie de jeu, afin de 
+rendre l'expérience de jeu plus immersive et interactive.
 
-\subsection{Problématiques et motivations}               % Sous-section 1.2: Contexte
-\label{subsec:Problématiques et motivations}             % Étiquette de la sous-section
+\subsection{Problématiques et motivations}               
+\label{subsec:Problématiques et motivations}          
 Même avec le grands nombre de plateformes de création de jeux-vidéos
 disponibles, il est difficile de trouver une plateforme qui soit:
 \begin{itemize}
     \item Simple à prendre en main, sans avoir à écrire de code;
-    \item Permettant de créer des jeux-vidéos avec des interactions physiques;
-    \item Accessible à tous, sans avoir à passer par des étapes compliquées
-          ou des configurations complexes.
+    \item Permettant de créer des jeux-vidéos avec des interactions 
+    physiques;
+    \item Accessible à tous, sans avoir à passer par des étapes 
+    compliquées
+    ou des configurations complexes.
 \end{itemize}
-Ce sont ces problématiques qui nous ont incités à travailler sur \textbf{ZayLou Games}.
-Notre motivations est de permettre à tout le monde de créer son propre jeu-vidéo
-sans avoir à écrire de code, tout en apportant une couche d'originalité avec les interactions
-physiques.
+Ce sont ces problématiques qui nous ont incités à travailler sur 
+\textbf{ZayLou Games}. Notre motivations est de permettre à tout le monde 
+de créer son propre jeu-vidéo sans avoir à écrire de code, tout en 
+apportant une couche d'originalité avec les interactions physiques.
 
-\subsection{Objectifs}               % Sous-section 1.3: Objectifs
-\label{subsec:objectifs}             % Étiquette de la sous-section
-Avec \textbf{ZayLou Games}, nous avons pour objectif de permettre à tout le monde
-de créer son propre jeu-vidéo en 2D sur une plateforme web intuitive, de jouer au jeu
-créé à l'aide d'une application mobile, et d'utiliser la technologie NFC
-pour permettre des interactions physiques dans le jeu.
+\subsection{Objectifs}             
+\label{subsec:objectifs}             
+Avec \textbf{ZayLou Games}, nous avons pour objectif de permettre à tout 
+le monde de créer son propre jeu-vidéo en 2D sur une plateforme web 
+intuitive, de jouer au jeu créé à l'aide d'une application mobile, et 
+d'utiliser la technologie NFC pour permettre des interactions physiques 
+dans le jeu.
 
-\newpage                            % Nouvelle page
+\newpage                            
 
-\section{Analyse des besoins et étude préliminaire}              % Section 2: Analyse des besoins et étude préliminaire
-\label{sec:Analyse}                                              % Étiquette de la section
-Comme pour tout projet, il est important de commencer par une analyse des besoins
-et une étude préliminaire. Nous avons donc passé plusieurs semaines à itérer sur 
-les besoins du projet.
+\section{Analyse des besoins et étude préliminaire}              
+\label{sec:Analyse}                                              
+Comme pour tout projet, il est important de commencer par une analyse 
+des besoins et une étude préliminaire. Nous avons donc passé plusieurs 
+semaines à itérer sur les besoins du projet.
 
-\subsection{Exigences fonctionnelles et non-fonctionnelles}              % Sous-section 2.1: Exigences fonctionnelles et non-fonctionnelles
+\subsection{Exigences fonctionnelles et non-fonctionnelles}              
 \label{subsec:Exigences}          
 Voici la liste des exigences que la plateforme doit supporter:
 
@@ -98,9 +103,9 @@ sélectionner une ou plusieurs cases de la grille pour définir des éléments
 dans le jeu (comme la position de départ du joueur, les pièges, etc).
 L'utilisateur doit aussi pouvoir ajuster les dimensions des objets définis 
 dans la grille, et ajouter des conditions logiques pour enrichir la 
-dynamique du jeu. Il peut aussi cumuler des effets jusqu'à un certain point,
-et même superposer des effets (par exemple, appliquer plusieurs effets en 
-même temps).
+dynamique du jeu. Il peut aussi cumuler des effets jusqu'à un certain 
+point, et même superposer des effets (par exemple, appliquer plusieurs 
+effets en même temps).
 
 Il faut aussi que l'utilisateur ait la possibilité de consulter tous 
 les jeux qu'il a créés. Il doit pouvoir y jouer à l'aide
@@ -113,17 +118,17 @@ devront permettre à l'utilisateur de définir ses éléments de jeu.
 La plateforme doit aussi permettre à l'utilisateur non seulement de créer 
 les effets qu'il veut mettre dans son jeu, mais aussi de les sauvegarder
 pour les réutiliser dans d'autres jeux. Il est aussi important que la 
-plateforme web permette à l'utilisateur de sauvegarder son avancée dans la 
-création de son jeu de manière à ce qu'il puisse récupérer l'état de la grille
-tel qu'il l'avait laissé avant la sauvegarde.
+plateforme web permette à l'utilisateur de sauvegarder son avancée dans 
+la création de son jeu de manière à ce qu'il puisse récupérer l'état de 
+la grille tel qu'il l'avait laissé avant la sauvegarde.
 
 Quant à l'application mobile, elle doit pouvoir authentifier l'utilisateur
 et synchroniser ses jeux avec le backend de manière à ce qu'il puisse les
-retrouver. Une autre exigence fonctionnelle serait d'interpréter et d'évaluer
-les conditions logiques pour déclencher les effets selon le contexte du jeu. 
-Il faut aussi que l'utilisateur puisse scanner les cartes NFC et que l'application
-extraie l'identifiant et déclenche en temps réel l'effet correspondant dans la
-session de jeu.
+retrouver. Une autre exigence fonctionnelle serait d'interpréter et 
+d'évaluer les conditions logiques pour déclencher les effets selon le 
+contexte du jeu. Il faut aussi que l'utilisateur puisse scanner les 
+cartes NFC et que l'application extraie l'identifiant et déclenche en 
+temps réel l'effet correspondant dans la session de jeu.
 
 \subsubsection{Exigences non fonctionnelles}
 \label{subsubsec:non fonctionnelles}  
@@ -146,16 +151,17 @@ La plateforme mobile doit être conçue pour être compatible avec les
 systèmes IOS et Android. Il faut aussi que chaque composant logiciel
 (API, interface, etc.) soit testable indépendamment de manière à
 faciliter les tests unitaires et les tests d'intégration. Le système doit
-pouvoir supporter l'ajout fréquent de nouveaux jeux ou effets sans dégradation 
-notable des performances. 
+pouvoir supporter l'ajout fréquent de nouveaux jeux ou effets sans 
+dégradation notable des performances. 
 
 \subsection{Méthodologie utilisée}
 \label{Méthodologie}
-Nous avons décidé d'utiliser la méthodologie Agile pour le développement de la plateforme.
-Cette méthodologie nous permet de travailler de manière itérative et incrémentale,
-ce qui est idéal pour un projet de cette envergure.
-Nous avons donc commencé par définir les exigences fonctionnelles et non-fonctionnelles, puis nous avons
-continué avec le prototype figma de la plateforme web.
+Nous avons décidé d'utiliser la méthodologie Agile pour le développement 
+de la plateforme. Cette méthodologie nous permet de travailler de manière 
+itérative et incrémentale, ce qui est idéal pour un projet de cette 
+envergure. Nous avons donc commencé par définir les exigences 
+fonctionnelles et non-fonctionnelles, puis nous avons continué avec le 
+prototype figma de la plateforme web.
 
 Nous avions aussi organisé des réunions hebdomadaires avec le Superviseur pour discuter de l'avancement
 du projet et des problèmes rencontrés. Pour le développement, nous avons utilisé GitHub pour
@@ -229,9 +235,11 @@ reliée directement au Backend.
 
 \subsection{Modèle de données}
 \label{subsec:modèle de données}
-Le modèle de données du système repose sur une architecture orientée objet et un stockage en base de données NoSQL.
-Les données échangées avec le frontend et le backend sont transformées en JSON. Cela facilitera leur intégration
-dans les requêtes API et leur stockage dans la base de données.
+Le modèle de données du système repose sur une architecture orientée 
+objet et un stockage en base de données NoSQL. Les données échangées 
+avec le frontend et le backend sont transformées en JSON. Cela facilitera
+leur intégration dans les requêtes API et leur stockage dans la base de 
+données.
 
 \subsubsection{Structure et entités principales}
 \label{subsubsec:structure et entités principales}
@@ -408,7 +416,7 @@ sauvegarde d'un jeu dant le système:
     \centering
     \includegraphics[width=\textwidth]{saveJeu.jpg}
     \caption{Diagramme de séquence pour la sauvegarde d'un jeu}
-    \label{fig:sequence sauvegarder}
+    \label{fig:sequence-sauvegarder}
 \end{figure}
 
 Une fois que l'utilisateur appuie sur sauvegarder après avoir modifié 
@@ -422,23 +430,31 @@ d’afficher un message de succès à l’utilisateur, l’informant que le jeu 
 bien été enregistré.
 
 \subsection{Description détaillée des composants principaux}
+\label{subsec:Description composants}
 
 \section{Évaluation}
+\label{sec:Evaluation}
 
 \subsection{Tests unitaires et fonctionnels réalisés}
+\label{subsec:Tests}
 
 \subsection{Évaluation de performance}
+\label{subsec:performance}
 
 \subsection{Évaluation d'utilisabilité}
+\label{subsec: utilisabilité}
 
 \subsection{Comparaison avec les objectifs initiaux}
+\label{subsec:Comparaison}
 
 \section{Discussion critique}
+\label{sec:critique}
 Le projet \textbf{ZayLou Games} n'a pas été aussi complet 
 qu'on l'aurait voulu, notemment en raison du temps limité, des
 contraintes techniques et du volume de fonctionnalités envisagées.
 
 \subsection{Analyse critique de la solution développée}
+\label{subsec:analyse critique}
 Ls solution développée permet à un utilisateur de définir les 
 éléments sur la grille en sélectionnant les cases et en choisissant
 leur type  (mur, vide, piège…). Elle reste cependant incomplète car 
@@ -456,9 +472,11 @@ fonctionnalités comme la gestion d’historique, la duplication de scènes
 ou le partage de jeux restent à implémenter.
 
 \subsection{Problèmes rencontrés et solutions mises en place}
+\label{subsec:prblèmes et solutions}
 
 \subsection{Ce que vous auriez fait différemment avec plus de temps ou 
 de ressources}
+\label{subsec:avec du temps}
 Avec plus de temps ou plus de ressources, plusieurs améliorations 
 auraient été apportées: pour l'interface utilisateur, nous aurions pu
 envisager l'ajout d’un vrai éditeur visuel d’effets, de règles et de 
@@ -474,5 +492,40 @@ ensemble.
 En plus de l'application mobile que nous aurions pu développée, nous 
 aurions pu permettre à l’utilisateur d’enregistrer un jeu localement ou 
 de partager un lien vers son jeu avec d’autres joueurs.
+
+\section{Conclusion}
+\label{sec:Conclusion}
+Le session pour le projet arrivant à terme, il est important de faire un
+bilan de ce que notre expérience.
+
+\subsection{Bilan du projet}
+\label{subsec:Bilan}
+Le projet \textbf{ZayLou Games} avait pour objectif de permettre à des
+utilisateur de concevoir leur propres jeux interactifs à l'aide d'une 
+grille personnalisable en modifiant les cases de manière à changer leur
+type, en y ajoutant des effets et des règles. Sur le plan technique, côté
+backend, nous mis en place une base fonctionnelle permettant la création,
+la mise à jour et la sauvegarde des jeux. Le backend expose des routes
+REST pour gérer les opérations essentielles: création de jeu, 
+récupération par ID, modifier un jeu, etc. Toutes les entités du jeu 
+(grille, effet, règle, etc.) ont été modélisées avec Mongoose, avec des 
+relations cohérentes et une organisation orientée objet claire.
+
+\subsection{Leçons tirées}
+\label{subsec:Leçons}
+Ce projet nous a permis de mieux comprendre les défis liés au 
+développement d’une application modulaire et interactive, et 
+d’appliquer de façon concrète plusieurs concepts-clés: persistance des
+données en temps réel via une API REST et MongoDB, organisation du code
+dans un projet complet full-stack. Nous avons également pris conscience 
+de l’importance de la synchronisation frontend–backend, de la gestion 
+rigoureuse des types avec TypeScript
+
+\subsection{Pistes d’amélioration / Développement futur}
+\label{subsec:Amelioration}
+Plusieurs pistes d'amélioration et d'évolution sont envisageables pour
+faire évoluer \textbf{ZayLou Games}: il serait, par exemple, intéressant 
+de permettre à l'utilisateur de tester son jeu en temps réel avec 
+un déclenchement automatique des effets et des règles.
 
 \end{document}                      % Fin du documents

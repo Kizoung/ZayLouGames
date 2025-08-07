@@ -1,6 +1,6 @@
-PWD C:\Users\MarcO\OneDrive\Documents\ZayLou_rapport
+PWD C:\Users\MarcO\Desktop\ZayLouGames\ZayLou_rapport
 INPUT C:\Users\MarcO\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\MarcO\OneDrive\Documents\ZayLou_rapport\rapport_final.tex
+INPUT c:\Users\MarcO\Desktop\ZayLouGames\ZayLou_rapport\rapport_final.tex
 OUTPUT rapport_final.log
 INPUT C:\Users\MarcO\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\MarcO\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls

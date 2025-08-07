@@ -32,3 +32,7 @@
 \contentsline {subsection}{\numberline {6.1}Analyse critique de la solution développée}{14}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Problèmes rencontrés et solutions mises en place}{15}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}Ce que vous auriez fait différemment avec plus de temps ou de ressources}{15}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Conclusion}{15}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Bilan du projet}{15}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Leçons tirées}{16}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Pistes d’amélioration / Développement futur}{16}{subsection.7.3}%
