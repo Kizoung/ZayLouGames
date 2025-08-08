@@ -36,3 +36,10 @@
 \contentsline {subsection}{\numberline {7.1}Bilan du projet}{15}{subsection.7.1}%
 \contentsline {subsection}{\numberline {7.2}Leçons tirées}{16}{subsection.7.2}%
 \contentsline {subsection}{\numberline {7.3}Pistes d’amélioration / Développement futur}{16}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Remerciements}{16}{section.8}%
+\contentsline {section}{\numberline {9}Références}{17}{section.9}%
+\contentsline {section}{\numberline {10}Annexes}{17}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Extraits de code détaillés}{17}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Captures d'écrans de l'application}{20}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Jeux de tests, résultats d’évaluation complets}{22}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Documentation technique, schémas supplémentaires}{22}{subsection.10.4}%

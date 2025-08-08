@@ -526,6 +526,151 @@ rigoureuse des types avec TypeScript
 Plusieurs pistes d'amélioration et d'évolution sont envisageables pour
 faire évoluer \textbf{ZayLou Games}: il serait, par exemple, intéressant 
 de permettre à l'utilisateur de tester son jeu en temps réel avec 
-un déclenchement automatique des effets et des règles.
+un déclenchement automatique des effets et des règles. Le projet
+pourrait aussi être amélioré en implémentant un système multijoueur en 
+utilisant des WebSockets pour permettre à plusieurs utilisateurs de 
+jouer ensemble.
+
+\section{Remerciements}
+\label{sec:Remerciements}
+Nous tenons à exprimer notre sincère gratitude au Département 
+d’informatique et de recherche opérationnelle de l’Université de 
+Montréal pour le cadre d’apprentissage stimulant et l'opportunité 
+de laisser des étudiants apprendre encore plus grâce au cours
+IFT3150 - Projet d'informatique.
+
+Nous remercions tout particulièrement le superviseur de notre projet,
+M. Louis-Édouard Lafontant, pour sa disponibilité, ses conseils 
+pertinents, et son accompagnement tout au long du projet. Son regard 
+critique et ses suggestions ont joué un rôle déterminant dans 
+l’évolution de notre réflexion. Ses retours réguliers nous ont permis 
+d'améliorer la qualité du projet à chaque étape, tant sur le plan 
+technique que conceptuel.
+
+Nous remercions également l’ensemble du corps enseignant du département 
+pour la formation rigoureuse qu’il nous a dispensée, et qui nous a 
+donné les bases nécessaires pour nous attaquer à un projet de cette 
+envergure.
+
+\section{Références}
+\label{sec:références}
+
+\begin{enumerate}
+  
+  \item React, “\textit{React documentation},” Meta, 2024. [En ligne]. Disponible sur: \url{https://react.dev/}
+  
+  \item Express.js, “\textit{Express - Node.js web application framework},” 2024. [En ligne]. Disponible sur: \url{https://expressjs.com/}
+  
+  \item MongoDB, “\textit{MongoDB Manual},” 2024. [En ligne]. Disponible sur: \url{https://www.mongodb.com/docs/}
+  
+  \item OpenAI, “\textit{ChatGPT},” 2024. [En ligne]. Disponible sur: \url{https://chat.openai.com/}
+
+\end{enumerate}
+
+\section{Annexes}
+\label{sec:Annexes}
+
+\subsection{Extraits de code détaillés}
+\label{subsec:Extraits de code}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{user.png}
+    \caption{Création du schéma utilisateur}
+    \label{fig:creation user}
+\end{figure}
+
+Ce code définit le modèle Mongoose Utilisateur utilisé dans le backend
+pour représenter les comptes utilisateurs dans la base de données MongoDB.
+Chaque utilisateur possède un idUtilisateur unique, un courriel, un nom
+et un mot de passe.
+Deux relations sont définies avec d'autres collections de la base de 
+données: un tableau de références vers les jeux créés, 
+lié à la collection Jeu, via des identifiants de type ObjectId, et 
+un tableau de références vers des effets personnalisés, 
+liés à la collection Effet.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{conditions.png}
+    \caption{Conditions pour les jeux}
+    \label{fig:conditions jeux}
+\end{figure}
+
+Ce code définit la classe Condition, utilisée pour représenter une 
+condition logique dans le système d’effets du jeu. Chaque condition est 
+composée d’un attribut, d’un opérateur (comme ==, !=, <, >=, etc.) 
+et d’une valeur de comparaison. La méthode estVérifiée permet d’évaluer 
+si la condition est remplie, en comparant dynamiquement la valeur d’un 
+attribut dans un contexte donné (par exemple, les propriétés d’un joueur 
+ou d’une case) avec la valeur cible. Le switch centralise tous les cas 
+possibles d’opérateurs, ce qui rend cette classe facilement extensible 
+et adaptée à l’exécution conditionnelle d’effets ou de règles dans le 
+moteur de jeu.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{header.png}
+    \caption{l'en tête de la plateforme}
+    \label{fig:en tête plateforme}
+\end{figure}
+
+Ce composant React nommé Header définit l’en-tête de l’application 
+ZayLou Games. Il utilise des classes Bootstrap pour assurer une mise en 
+page responsive et bien alignée, avec une barre de navigation fixe en 
+haut de l’écran. Le style inline applique un dégradé linéaire de couleur, 
+ainsi qu’une hauteur et une priorité d’affichage.
+
+\subsection{Captures d'écrans de l'application}
+\label{subsec:Captures écran}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{interface.png}
+    \caption{Interface de la plateforme}
+    \label{fig:interface de la plateforme}
+\end{figure}
+
+Cette capture d’écran montre l’interface principale de création de jeu 
+dans l’application ZayLou Games. En haut, une barre de navigation fixe.
+Juste en dessous, l’utilisateur peut nommer son jeu, lancer un test 
+interactif via le bouton “Tester” (non implémenté) ou sauvegarder ses 
+modifications avec le bouton “Sauvegarder”.
+
+La partie centrale est occupée par une grille éditable, dans laquelle 
+l’utilisateur peut construire la scène de son jeu. En bas, une palette 
+d’outils permet de sélectionner le type de case à placer (vide, mur, 
+herbe, piège, monstre, joueur), ou de réinitialiser entièrement la grille.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{joueur.png}
+    \caption{Grille avec case joueur}
+    \label{fig:Grille avec joueurs}
+\end{figure}
+
+Cette capture d'écran présente la grille avec une case sélectionnée en 
+tant que joueur. On voit aussi que le bouton pour sélectionner une case 
+est désactivé. La plateforme ne permet pas que l'utilisateur définisse
+joueurs dans la grille.
+
+\subsection{Jeux de tests, résultats d’évaluation complets}
+\label{subsec:Jeux de tests}
+
+\subsection{Documentation technique, schémas supplémentaires}
+\label{subsec:schémas supplémentaires}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{sequence_websocket.jpg}
+    \caption{Diagramme de séquence avec WebSocket}
+    \label{fig:Séquence WebSocket}
+\end{figure}
+
+Ce diagramme de séquence représente le processus de déclenchement d’un 
+effet en temps réel suite au scan d’une carte NFC, via une communication 
+WebSocket. Ce flux était initialement prévu pour les jeux en multijoueurs.
+
+
 
 \end{document}                      % Fin du documents
