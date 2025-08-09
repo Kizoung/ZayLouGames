@@ -23,23 +23,23 @@
 \contentsline {subsection}{\numberline {4.2}Particularités vis-à-vis de la conception et autre contraintes}{11}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Flux principaux}{11}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Description détaillée des composants principaux}{14}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Évaluation}{14}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Tests unitaires et fonctionnels réalisés}{14}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Évaluation de performance}{14}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Évaluation d'utilisabilité}{14}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Comparaison avec les objectifs initiaux}{14}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Discussion critique}{14}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Analyse critique de la solution développée}{14}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Problèmes rencontrés et solutions mises en place}{15}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Ce que vous auriez fait différemment avec plus de temps ou de ressources}{15}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Conclusion}{15}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Bilan du projet}{15}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Leçons tirées}{16}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Pistes d’amélioration / Développement futur}{16}{subsection.7.3}%
-\contentsline {section}{\numberline {8}Remerciements}{16}{section.8}%
-\contentsline {section}{\numberline {9}Références}{17}{section.9}%
-\contentsline {section}{\numberline {10}Annexes}{17}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Extraits de code détaillés}{17}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Captures d'écrans de l'application}{20}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Jeux de tests, résultats d’évaluation complets}{22}{subsection.10.3}%
-\contentsline {subsection}{\numberline {10.4}Documentation technique, schémas supplémentaires}{22}{subsection.10.4}%
+\contentsline {section}{\numberline {5}Évaluation}{15}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Tests unitaires et fonctionnels réalisés}{15}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Évaluation de performance}{16}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Évaluation d'utilisabilité}{17}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Comparaison avec les objectifs initiaux}{18}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Discussion critique}{19}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Analyse critique de la solution développée}{19}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Problèmes rencontrés et solutions mises en place}{19}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Ce que vous auriez fait différemment avec plus de temps ou de ressources}{21}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Conclusion}{21}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Bilan du projet}{21}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Leçons tirées}{21}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Pistes d’amélioration / Développement futur}{22}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Remerciements}{22}{section.8}%
+\contentsline {section}{\numberline {9}Références}{22}{section.9}%
+\contentsline {section}{\numberline {10}Annexes}{23}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Extraits de code détaillés}{23}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Captures d'écrans de l'application}{26}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Jeux de tests, résultats d’évaluation complets}{28}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Documentation technique, schémas supplémentaires}{28}{subsection.10.4}%

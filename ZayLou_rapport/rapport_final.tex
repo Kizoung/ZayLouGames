@@ -431,21 +431,175 @@ bien été enregistré.
 
 \subsection{Description détaillée des composants principaux}
 \label{subsec:Description composants}
+L’implémentation backend repose sur une séparation claire en couches : 
+\begin{itemize}
+    \item \textbf{Modèles et schémas Mongoose} : définissent la structure des entités necessaire en base MongoDB (ex. \texttt{Jeu}, \texttt{Utilisateur}, \texttt{Effet}, \texttt{CarteNFC}). 
+    Les schémas imposent les types, les relations et certaines validations.
+    \item \textbf{Services} : contiennent la logique métier.
+    \begin{itemize}
+        \item \texttt{JeuService} : gère la création, la récupération, la mise à jour et la suppression de jeux. Implémente la logique de sauvegarde en base et la génération d’identifiants numériques uniques via \texttt{genererIdUnique.ts} et \texttt{getNextId.ts}.
+        \item \texttt{UtilisateurService} : gère l’inscription, l’authentification et la récupération des données utilisateur. Utilise \texttt{bcrypt} pour le hachage des mots de passe et \texttt{jsonwebtoken} pour la génération et la vérification des tokens.
+        \item \texttt{EffetService} : s’occupe de la création et de la gestion des effets dans un jeu (déclencheurs, conditions, actions).
+        \item \texttt{CarteNFCService} : gère l’association entre une carte NFC scannée et un effet à déclencher dans un jeu.
+    \end{itemize}
+    \item \textbf{Contrôleurs} : reçoivent les requêtes HTTP, valident les données entrantes et délèguent aux services.
+    \begin{itemize}
+        \item \texttt{jeuControllers.ts} : mappe les requêtes liées aux jeux vers les méthodes du \texttt{JeuService}.
+        \item \texttt{utilisateurController.ts} : traite l’inscription, le login et la récupération d’informations utilisateur.
+    \end{itemize}
+    \item \textbf{Routes} : définies dans \texttt{jeuRoutes.ts} et \texttt{utilisateurRoutes.ts}, elles exposent les endpoints REST aux clients.
+    \item \textbf{Middlewares} :
+    \begin{itemize}
+        \item \texttt{AuthMiddleware.ts} : vérifie la présence et la validité d’un token JWT pour protéger certaines routes.
+        \item \texttt{validateEffetMiddleware.ts} : valide les données reçues lors de la création ou modification d’un effet.
+    \end{itemize}
+    \item \textbf{Utilitaires} :
+    \begin{itemize}
+        \item \texttt{genererIdUnique.ts} et \texttt{getNextId.ts} : gèrent la génération d’identifiants numériques uniques,
+         en alternative aux \texttt{ObjectId} de MongoDB.
+    \end{itemize}
+\end{itemize}
+
+Cette organisation modulaire permet de séparer les responsabilités, de faciliter la maintenance et d’étendre le projet
+ en ajoutant de nouvelles fonctionnalités (par exemple de nouveaux types d’effets ou de règles) sans impacter le reste du système.
+
+
 
 \section{Évaluation}
 \label{sec:Evaluation}
 
 \subsection{Tests unitaires et fonctionnels réalisés}
 \label{subsec:Tests}
+Les tests ont ciblé en priorité le cycle complet d’authentification ainsi que la persistance automatique côté client, car ce sont des fonctionnalités critiques dans le fonctionnement actuel de la plateforme.
+\begin{itemize}
+    \item \textbf{Inscription (\texttt{POST /api/utilisateurs})} : vérification de la création d’un compte avec les champs \texttt{nom}, \texttt{email} et \texttt{motDePasse}. Scénarios testés :
+    \begin{itemize}
+      \item création valide $\rightarrow$ code HTTP 201 et retour d’un objet utilisateur sans le mot de passe ;
+      \item tentative avec un email déjà existant $\rightarrow$ code HTTP 409 ;
+      \item schéma invalide (champs manquants ou format incorrect) $\rightarrow$ code HTTP 422.
+    \end{itemize}
+    
+    \item \textbf{Connexion (\texttt{POST /login})} : validation de la génération d’un \textbf{JWT} signé à partir d’identifiants valides. Cas testés :
+    \begin{itemize}
+      \item connexion valide $\rightarrow$ code HTTP 200 et présence d’un champ \texttt{token} non vide ;
+      \item mot de passe incorrect $\rightarrow$ code HTTP 401 ;
+      \item utilisateur inexistant $\rightarrow$ code HTTP 404.
+    \end{itemize}
+
+    \item \textbf{Accès protégé (\texttt{GET /profils/\{id\}})} : contrôle que les routes protégées nécessitent bien un \texttt{Authorization: Bearer <token>} valide.
+    \begin{itemize}
+      \item accès par l’utilisateur lui-même ou un administrateur $\rightarrow$ code HTTP 200 ;
+      \item accès par un autre utilisateur $\rightarrow$ code HTTP 403 ;
+      \item absence ou expiration du token $\rightarrow$ code HTTP 401.
+    \end{itemize}
+    
+    \item \textbf{Sauvegarde automatique de la grille} : côté frontend, toute modification du tableau de types (\texttt{state types}) déclenche une requête \texttt{PATCH /api/jeux/\{id\}} après un délai d’environ 500 ms (mécanisme de \textit{debounce}).
+    \begin{enumerate}
+      \item Modification unique $\rightarrow$ 1 requête \texttt{PATCH}.
+      \item Série de modifications rapprochées $\rightarrow$ 1 seule requête regroupée (vérifiée via compteur d’appels).
+      \item Perte de réseau temporaire $\rightarrow$ la sauvegarde reprend automatiquement au prochain changement ; cohérence vérifiée par relecture via \texttt{GET /api/jeux/\{id\}}.
+    \end{enumerate}
+  \end{itemize}
+  \vspace{0.5em}
+\noindent\textbf{Exemple de commandes utilisées pour tester} :
+
+\begin{verbatim}
+# Inscription
+curl -X POST http://localhost:3000/api/utilisateurs \
+ -H "Content-Type: application/json" \
+ -d '{ "nom":"Test", "email":"docu@example.com", "motDePasse":"Secret123" }'
+
+# Connexion -> récupère le token
+TOKEN=$(curl -s -X POST http://localhost:3000/login \
+ -H "Content-Type: application/json" \
+ -d '{ "email":"docu@example.com", "motDePasse":"Secret123" }' | jq -r .token)
+
+# Profil protégé
+ID="<remplacer_par_id_utilisateur>"
+curl http://localhost:3000/profils/$ID -H "Authorization: Bearer $TOKEN"
+\end{verbatim}
+
 
 \subsection{Évaluation de performance}
 \label{subsec:performance}
+Les mesures de performance ont été effectuées directement depuis l’outil de développement du navigateur (onglet Réseau apres avoir cliquer sur inspecter la page), en observant le temps de réponse des requêtes HTTP lors d’un usage normal.
+
+\begin{itemize}
+  \item \textbf{Inscription (\texttt{POST /api/utilisateurs})} : temps de réponse moyen observé $\approx$ 120\,ms. Les pics enregistrés (jusqu’à 200\,ms) sont apparus uniquement lors de la première requête après un démarrage du serveur.
+  
+  \item \textbf{Connexion (\texttt{POST /login})} : temps moyen $\approx$ 100\,ms. Même sous plusieurs tentatives consécutives, le temps est resté stable et inférieur à 150\,ms. Le token JWT est généré et renvoyé sans latence notable.
+  
+  \item \textbf{Accès profil protégé (\texttt{GET /profils/\{id\}})} : réponse en $\approx$ 90–110\,ms, incluant la vérification du JWT côté serveur.
+  
+  \item \textbf{Sauvegarde automatique de la grille (\texttt{PATCH /api/jeux/\{id\}})} : lors de modifications isolées, la requête prend en moyenne 130–140\,ms pour être traitée et confirmée. Avec plusieurs modifications rapprochées, 
+  le mécanisme de \emph{debounce} regroupe les changements et n’envoie qu’une seule requête, réduisant l’impact sur la bande passante et maintenant la latence sous 150\,ms.
+\end{itemize}
+
+\noindent Ces temps ont été relevés dans un environnement local de développement, sans latence réseau significative.  
+En conditions réelles (déploiement distant), on peut s’attendre à des temps légèrement supérieurs, mais la structure actuelle du backend et la taille réduite des payloads JSON permettent de rester dans des valeurs confortables ($<$ 200\,ms pour les opérations critiques).
+
 
 \subsection{Évaluation d'utilisabilité}
 \label{subsec: utilisabilité}
 
+L’évaluation de l’utilisabilité s’est faite en observant l’expérience utilisateur globale lors de scénarios typiques (inscription, connexion, modification de grille) et en vérifiant la clarté des interactions.
+
+\begin{itemize}
+  \item \textbf{Visibilité de l’état du système} : l’utilisateur reçoit un retour visuel après les actions importantes (confirmation après sauvegarde automatique de la grille, redirection vers son espace après connexion réussie). Les temps de réponse sont courts, ce qui renforce la perception de fluidité.
+  
+  \item \textbf{Correspondance entre le système et le monde réel} : les libellés des boutons et messages sont explicites (ex. “Enregistrer”, “Mot de passe incorrect”), ce qui réduit l’ambiguïté pour un utilisateur non technique.
+  
+  \item \textbf{Contrôle et liberté de l’utilisateur} : possibilité de revenir en arrière via la navigation, déconnexion accessible depuis toutes les pages protégées.
+  
+  \item \textbf{Prévention des erreurs} : lors de l’inscription, les champs obligatoires sont clairement signalés et la validation empêche l’envoi de données incomplètes ou au mauvais format (email) avec un message clair.
+  
+  \item \textbf{Reconnaissance plutôt que rappel} : l’utilisateur retrouve ses jeux automatiquement après connexion sans avoir à rechercher manuellement, grâce à la récupération des données liée au token JWT.
+  
+  \item \textbf{Design minimaliste} : interface claire, peu d’éléments distrayants, les fonctionnalités principales (connexion, création de jeu, modification de la grille) sont mises en avant.
+\end{itemize}
+
+
+\noindent\textbf{Points à améliorer} :
+\begin{itemize}
+  \item Ajouter un indicateur explicite lorsque des modifications de grille ne sont pas encore sauvegardées.
+  \item Proposer un tutoriel interactif lors de la première utilisation pour présenter rapidement la logique de création et la sauvegarde automatique.
+  \item Intégrer des infobulles explicatives sur les champs de saisie (ex. format attendu pour l’email).
+    \item Améliorer la gestion des erreurs pour fournir des messages plus détaillés en cas de problème (ex. “Email déjà utilisé” au lieu de “Erreur lors de l’inscription”).
+\end{itemize}
+
+
 \subsection{Comparaison avec les objectifs initiaux}
 \label{subsec:Comparaison}
+
+L’objectif de départ était ambitieux : proposer une plateforme complète permettant à tout utilisateur de créer, configurer et jouer à son propre jeu 2D avec intégration NFC, le tout à travers une interface web avancée et une application mobile.  
+En l’état actuel, seule une partie de cette vision a été atteinte.
+
+\begin{itemize}
+  \item \textbf{Objectifs atteints} :
+  \begin{itemize}
+    \item Gestion des comptes utilisateurs avec inscription, connexion sécurisée (JWT) et contrôle d’accès aux ressources.
+    \item Mise en place d’un backend structuré (MERN) capable de gérer les entités principales (Jeu, Utilisateur, Effet, Carte NFC).
+    \item Sauvegarde automatique des modifications de grille côté client, avec persistance en base.
+  \end{itemize}
+
+  \item \textbf{Objectifs partiellement atteints} :
+  \begin{itemize}
+    \item Système d’effets, règles et conditions implémenté côté backend mais non exploité dans l’interface web.
+    \item Application Web connectée au backend, mais fonctionnalités limitées à l’authentification et à la lecture de données de base.
+  \end{itemize}
+
+    \item \textbf{Objectifs non atteints} :
+  \begin{itemize}
+    \item Éditeur visuel complet (drag-and-drop, configuration avancée d’effets/règles, prévisualisation de scènes).
+    \item Mode multijoueur en temps réel à travers WebSockets.
+    \item Fonctionnalités avancées prévues sur mobile : lecture NFC intégrée au gameplay, synchronisation en direct avec la session de jeu.
+    \item Partage public des jeux et historique des versions.
+  \end{itemize}
+\end{itemize}
+
+\noindent En résumé, la structure technique actuelle pose des bases solides, mais le rendu fonctionnel livré reste limité par rapport aux 
+attentes initiales. Les choix d’architecture (MERN, API REST, stockage NoSQL) permettent toutefois de poursuivre le développement pour intégrer les fonctionnalités manquantes sans refonte majeure.
+
 
 \section{Discussion critique}
 \label{sec:critique}
@@ -473,6 +627,29 @@ ou le partage de jeux restent à implémenter.
 
 \subsection{Problèmes rencontrés et solutions mises en place}
 \label{subsec:prblèmes et solutions}
+Durant le développement, nous avons rencontré plusieurs difficultés, certaines ayant été corrigées, tandis que d’autres restent partiellement non résolues.
+
+\begin{itemize}
+  \item \textbf{Problèmes d’authentification et de gestion des tokens} : l’inscription et la connexion ont été particulièrement problématiques. Les tokens JWT n’étaient pas toujours générés ou correctement transmis au frontend, ce qui provoquait des erreurs 401 sur des routes protégées. Nous avons passé beaucoup de temps dans la console du navigateur et dans l’onglet Réseau pour inspecter les requêtes et comprendre où le token se perdait. Plusieurs corrections ont été apportées côté backend et frontend, mais certaines incohérences persistent.
+  
+  \item \textbf{Cohérence entre les classes} : la structure orientée objet du backend fait que de nombreuses classes se réutilisent entre elles (\texttt{Jeu}, \texttt{Effet}, \texttt{Condition}, \texttt{Action}, \texttt{Règle}, \texttt{Utilisateur}, etc.). La moindre modification dans un modèle pouvait casser des méthodes dépendantes dans d’autres classes. Nous avons dû être particulièrement attentifs au typage et à la cohérence des interfaces TypeScript.
+  
+  \item \textbf{Courbe d’apprentissage du stack MERN + TypeScript} : c’était notre première expérience avec cette combinaison technologique. Comprendre le fonctionnement complet de MongoDB, Express, React et Node.js tout en ajoutant la couche de typage strict de TypeScript a demandé un temps d’adaptation important. L’apprentissage des bonnes pratiques, la gestion de l’asynchrone et la manipulation des types ont rallongé la durée prévue pour certaines tâches.
+
+  \item \textbf{Priorisation des tâches} : avec un délai limité, nous avons dû choisir quelles fonctionnalités développer en priorité et lesquelles reporter. Des fonctionnalités prévues initialement, comme un éditeur visuel complet ou le mode multijoueur, ont été mises de côté pour concentrer nos efforts sur l’authentification, la gestion des jeux et la sauvegarde automatique.
+  
+  \item \textbf{Débogage complexe} : certains bugs ont nécessité un travail d’analyse approfondi, avec des outils comme \texttt{console.log}, l’inspecteur réseau du navigateur, et des requêtes \texttt{curl} pour reproduire les scénarios côté API. La résolution passait souvent par un aller-retour entre le backend et le frontend afin d’aligner les schémas de données, corriger les importations TypeScript et harmoniser les noms de propriétés.
+  
+  \item \textbf{Autres difficultés techniques rencontrées} :
+  \begin{itemize}
+    \item Gestion d’identifiants numériques personnalisés en remplacement des \texttt{ObjectId} par défaut de MongoDB.
+    \item Synchronisation entre frontend et backend pour la sauvegarde de la grille en temps réel.
+    \item Problèmes liés au typage strict de TypeScript, où l’absence ou l’incomplétude d’une propriété empêchait la compilation.
+  \end{itemize}
+\end{itemize}
+
+\noindent Même si certaines de ces difficultés restent ouvertes, elles nous ont permis de mieux comprendre nos outils, d’améliorer nos méthodes de débogage et de poser des bases techniques plus solides pour la suite.
+
 
 \subsection{Ce que vous auriez fait différemment avec plus de temps ou 
 de ressources}
