@@ -5,20 +5,20 @@ import MenuControls from './components/MenuControls'
 import Grille from './components/Grille'
 import Profil from './pages/Profil'
 import Authentifier from './pages/Authentifier'
+import { GameProvider } from './contexts/GameContext'
 
 function ProtectedLayout() {
   const { user, ready } = useAuth()
-  const location = useLocation()
-
   if (!ready) return null
   if (!user) return <Navigate to="/auth" replace />
 
-  const isProfilPage = location.pathname.startsWith('/utilisateur/')
   return (
     <>
       <Header />
-      {!isProfilPage && <MenuControls />}
-      <Outlet />
+      <GameProvider key={user.id}>
+        <MenuControls />
+        <Outlet />
+      </GameProvider>
     </>
   )
 }
