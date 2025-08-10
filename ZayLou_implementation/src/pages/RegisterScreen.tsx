@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useUser } from "./contexts/UserContext";
-import { useGame } from "./contexts/GameContext";
+import { useUser } from "../contexts/UserContext";
+import { useGame } from "../contexts/GameContext";
 
 function RegisterScreen(){
     const [nom, setNom] = useState("");

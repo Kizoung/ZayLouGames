@@ -8,18 +8,29 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 
-import jeuRoutes from './routes/jeuRoutes'
+import jeuRoutes from './routes/JeuRoutes'
 import utilisateurRoutes from './routes/utilisateurRoutes'
 
 
 
 // Création du serveur Express
 const app = express()
-
 // Active CORS globalement pour permettre les appels du frontend
-app.use(cors())
+
+app.use(cors({ origin: 'http://localhost:5173', credentials: false }))
+
 // Permettre au serveur de lire les données JSON envoyées dans les requêtes (POST/PUT)
 app.use(express.json())
+
+
+/**app.use(cors({
+  origin: ['http://localhost:5173'],       // ton frontend Vite
+  methods: ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization'],
+  credentials: false,                               // laisse false si tu n’utilises PAS de cookies
+  optionsSuccessStatus: 204
+})) */
+
 
 app.use('/api/utilisateurs', utilisateurRoutes)
 app.use('/api/jeux', jeuRoutes)

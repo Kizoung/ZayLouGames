@@ -1,11 +1,16 @@
-import { Router } from 'express'
-import { creerUtilisateur, getUtilisateur } from '../controllers/utilisateurController'
-import {login} from '../controllers/utilisateurController'
+const express = require('express');
 
-const router = Router()
+const userCtrl = require('../controllers/utilisateurController');
 
-router.post('/', creerUtilisateur) // creer un utilisateur
-router.get('/:id', getUtilisateur)  // recup utilisateur
-router.post('/login', login)
+const router = express.Router();
 
-export default router
+// Créer un utilisateur
+router.post('/', userCtrl.creerUtilisateur) 
+// Récupérer un utilisateur
+router.get('/:id', userCtrl.getUtilisateur)  
+// Connexion d'un utilisateur
+router.post('/login', userCtrl.login)
+// Met à jour un utilisateur
+router.put('/:id', userCtrl.updateUser);
+
+export default router;

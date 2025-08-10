@@ -11,7 +11,9 @@ export function verifyToken(req: Request, res: Response, next: NextFunction): vo
     const token = authHeader?.split(' ')[1]
   
     if (!token) {
-      res.status(401).json({ erreur: 'Token manquant' })
+      res.status(401).json({ 
+        erreur: 'Vous devez vous connecter' 
+      })
       return
     }
   

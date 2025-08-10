@@ -1,18 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import { BrowserRouter } from 'react-router-dom'
+import { AuthProvider } from './contexts/UserContext'
 import { GameProvider } from './contexts/GameContext'
-import { UserProvider } from './contexts/UserContext'
-
-import 'bootstrap/dist/css/bootstrap.min.css'
+import App from './App'
 import './styles/index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-  <UserProvider>
-    <GameProvider>
-      <App />
-    </GameProvider>
-  </UserProvider>
+    <AuthProvider>
+      <BrowserRouter>
+        <GameProvider>
+          <App />
+        </GameProvider>
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>
 )
+
+
+
+
